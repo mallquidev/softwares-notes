@@ -1,0 +1,624 @@
+███████╗ ██████╗ ██╗     
+██╔════╝██╔═══██╗██║     
+███████╗██║   ██║██║     
+╚════██║██║▄▄ ██║██║     
+███████║╚██████╔╝███████╗
+╚══════╝ ╚══▀▀═╝ ╚══════╝
+		███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗ 
+		██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+		███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+		╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+		███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+		╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+                                                 
+                                                 
+                         
+                                                 
+
+char -- almacena tipo de datos de ancho fijo
+
+varchar --almacena tipo de dato alfanumérico de ancho variable
+
+text ---almacena tipo de datos alfanuméricos de ancho variable
+
+nchar --almacena tipo de datos de ancho fijo
+
+nvarchar --almacena tipo de datos alfanuméricos de ancho variable
+
+bit --almacena valores de 1 y 0
+int --almacena valores numéricos enteros
+bigint --almacena mas que int
+decimal --almacenar valores entre -10 38  decimal(19,2)
+numeric -- numero con limites numeric(9)
+money
+float
+
+¿Qué son las tablas? Son obj de la bd que alma registro
+¿Qué es registro? son datos 
+
+exec sp_help nametabla; --par ver los detalles de la tabla
+
+select * from sys.tables; --para sabes cuantas tablas hay en la bd
+
+exec sp_rename 'tblEmpleado','tblEmpleados'; --para cambiar nombre de tablas
+
+select * from tblEmpleados where  nEdad <= 35; -- cuando(where)
+
+truncate table Empleado --para eliminar todo los datos de la tabla
+
+delete from tblEmpleados where idEmpleado = 27; --eliminar algo especifico con where
+
+alter table tblEmpleados add rSexo char(1) = --agregar un campo mas a la tabla
+
+exec sp_rename 'tblEmpleado.nEdad','nEdades'; --cambia nombre del campo de una tabla
+
+update tblEmpleados set nEdad =  20 where idEmpleado = 18; --actualizar datos de una persona en un campo
+
+update tblEmpleados set rSexo = 'M' --Actualizar por completo los campos con un valor especifico
+
+update tblEmpleados set rSexo = 'F' where idEmpleado in(18,20,22,24,26); 
+actualizar valor a ciertos id
+
+insert into tblSalarios(vNombre, vApellido, nEdad)
+select vNombre, vApellido, nEdad from tblEmpleados --inserta campos de una tabla a otra tabla que deben ser los mismons nombres los campos
+
+insert into tblSalarios(vNombre, vApellido, nEdad)
+select vNombre, vApellido, nEdad from tblEmpleados
+where dSalario <= 53000			-- inserta campo de un tabla a otra con "where"
+
+select top 5 * from tblEmpleados  --top para ver los 5 primeros de la tabla
+
+select * from tblEmpleados where nTelefono is not null; --is null para saber que campo no tiene ningun valor
+
+select * from tblEmpleados where nTelefono is not null; --lo contrario de arriba
+
+constraint PK_name primary key(idTabla) --para dar nombre al primary key ya que el sistema lo pone otro
+
+*****CONSTRAINTS*****
+
+alter table tblEmpleados
+add constraint PK_salario primary key(idEmpleado); --funciona cuando el campo es not null el id para primarykey
+
+alter table tblEmpleados drop constraint PK_name  --elimina el primary key con el nombre designado a la llave
+
+*unique*
+idPersona int not null
+constraint UQ_idPersona unique(idPersona) --unique no se repita y es valido como dni nùmero de cel etc..
+					    con contraint le doy un nombre a ese unique para poder hacer
+					    cualquier cosa
+
+alter table telefono
+add constraint UQ_telefono unique(telefono) --agregar el unique externo
+
+alter table tblPersona drop constraint UQ_idPersona --elimina el nombre del unique
+
+*check* restriccion
+
+edad int check(edad>=18) --en el campo solo se ingresaro datos que diga check
+
+constraint CK_edad check (edad>=18) --esto se agrega en la misma creacion de tabla para ponerle un name al check
+
+........
+
+*default*
+
+ciudad varchar(50) default 'No tiene' --si no hay datos que poner entre lo default
+
+........
+
+*identity*
+
+select ident_seed('nametable') --ve en que numero id empiesa los datos
+select ident_incr('nametable') --de cuanto en cuanto avanza los id
+
+*foreign key*
+
+create table tblClientes(
+	id_cliente int not null,
+	cNombre varchar(50) not null,
+	cApellido varchar(50) not null,
+	nEdad int not null,
+	constraint PK_clientes primary key (id_cliente)
+)
+
+select * from tblClientes
+
+create table tblOrdernes(
+	id_orden int not null,
+	articulo varchar(50) not null,
+	id_cliente int not null,
+	constraint FK_ordenes_clientes foreign key (id_cliente) references tblClientes(id_cliente)
+)
+
+de esta manera se enlaza 2 tablas
+
+create table tblOrdernes(
+	id_orden int not null,
+	articulo varchar(50) not null,
+	id_cliente int not null,
+	constraint FK_ordenes_clientes foreign key (id_cliente) references tblClientes(id_cliente)
+	on delete cascade
+) 
+	--"con on delete cascade" se elimina la fila y no importa si depende de otra tabla primaria
+
+alter table tblOrdenes drop constraint FK_ordenes; --esto elimina el foreign key
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Views---
+
+Es para tener creado una función y solo llamar con el nombre 
+puesto select * from Mayores_30
+	----------------
+	-----Codigo-----
+create view Mayores_30
+	as 
+	select nombre, apellido, edad from clientes 
+	where edad>30;
+
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Distinct---
+
+Selecciona lo que digo sin que repita los datos
+	----------------
+	-----Codigo-----
+select distinct pais from clientes;
+
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Alias---
+
+Para dar un nombre especifico a un campo de una tabla
+para alias separado se usa "" 
+	----------------
+	-----Codigo-----
+select id_cliente as identificadores from clientes
+where compras < 10
+
+select nombre + ' ' + apellido from empleados  //para juntar
+
+select nombre + ' ' + apellido + ' ' +
+cast(edad as varchar(2)) as Datos from empleados // cast convierte a varchar(2)
+						   de 2 caracteres	
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Operadores de matematicos---
+
+Hacer operaciones matematicos
+	----------------
+	-----Codigo-----
+select nombre, descripcion, 
+precio +(precio * .01) as "Nuevo precio" from articulos
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Esquemas---
+
+para crear un esquema aparte mi ejemplo es como si tengo 2 tablas clientes pero con diferentes
+situcaciones creo un esquema lo pordefecto es dbo.(Database Owner)
+	----------------
+	-----Codigo-----
+  create schema Ventas;
+
+  create table ventas.clientes(
+	idcliente int,
+	nombre int,
+	direccion varchar(30),
+  )
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Order by---
+
+ordenar de ascendente a descendente
+	----------------
+	-----Codigo-----
+select * from Empleados order by edad; //se ve los campos en forma ascendente
+select * from clientes order by nombre asc // lo mismo de arriba pero aqui asc especifico
+select * from clientes order by nombre desc
+
+select max(precio) as Mas_caro from articulos; //para ver la maxima cantidad que hay
+select min(precio) as Mas_caro from articulos; //ver lo minimo
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Funciones de agrupacion: count, sum, avg---
+
+count(cuenta), sum(suma), avg(promedio)
+	----------------
+	-----Codigo-----
+select count(*) as Cantidad from articulos; veo la cantidad de filas en la tabla
+
+select sum(sueldo) as total from empleados; ver el total la suma
+select sum(sueldo) as total from empleados where puesto = 'Asistente';
+
+select avg(sueldo) as  promedio from empleados; veo el promedio pagado de empleados
+select avg(sueldo) from empleados where puesto = 'Gerente';
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------   
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Operadores and, or y not---
+
+hacer comparciones
+	----------------
+	-----Codigo-----
+select * from clientes where pais = 'Italia' and ciudad = 'Roma';
+select * from clientes where pais = 'Italia' and ciudad in('Roma','Venecia')
+
+select * from clientes where ciudad = 'Roma' or ciudad = 'venecia';
+
+
+select * from clientes where not pais = 'Alemania'; --no se vera alemania dice que "no sea alemania"
+select * from clientes where not pais = 'Alemania' and not pais = 'Canada';
+-------------------------------------------------------------------
+-------------------------------------------------------------------   
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Clausula between---
+
+Nos permite consultar valores entre en un rango de valores especificos
+	----------------
+	-----Codigo-----
+select * from empleados where id_empleado between 1 and 7; --me muesta los datos del 1 al 7(7 filas me muestra)
+select * from empleados where id_empleado between 1 and 7 or cant_hijos betwwen 1 and 3;
+
+select * from empleados where sueldo between 2000 and 4000 and puesto not in('Desarrollador');
+	esto me muesto el rango de sueldo entre 3k y 4k pero que no sea desarrollador
+
+select * from clientes where pais between 'Alemania' and 'Canada';
+	esto me muestra paises de alemania a canada en orden alfabetico alemania b canada  (entre ese rango)
+
+select * from empleados where fecha_contratacion between '1996-07-01' and '2003-05-06'
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Operadores Like y Not Like---
+
+es usado cuando buscamos patrones especificos en una tabla
+	----------------
+	-----Codigo-----
+select * from clientes where nombre like 'A%'; busca todo los nombres que empiecen con A
+select * from clientes where nombre like '%A'; busca todo los nombres que terminen con A
+select * from clientes where nombre like '%A%'; busca todo los nombres que contengan A
+select * from clientes where nombre like '___A%'; busca todo los que tenga el tercer carácter A
+select * from clientes where nombre like 'A%B'; busca que empieze con A y termine con B 
+
+select * from clientes where nombre not like 'A%O'; busca los que no empiecen con A y termine en o
+ 
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Joins---
+
+Enlaces entre tablas
+
+left join --trae todo de la izquierda y de la derecha solo lo que coincida con la izquierda
+right join --al contrario
+full outer join --trae toda las fila
+	----------------
+	-----Codigo inner join-----
+select ordenes.id_orden, clientes.nombre
+from ordenes
+inner join clientes on ordenes.idcliente  =  clientes.idcliente 
+
+select ordenes.id_orden, clientes.nombre
+from ordenes
+inner join clientes on ordenes.idcliente  =  clientes.idcliente
+where nombre = 'Juan' order by fecha_orden;
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Left Join---
+
+Enlaces entre tablas
+
+left join --trae todo de la izquierda y de la derecha solo lo que coincida con la izquierda
+right join --al contrario
+full outer join --trae toda las fila
+	----------------
+	-----Codigo-----
+select ordenes.id_orden, clientes.nombre
+from ordenes
+inner join clientes on ordenes.idcliente  =  clientes.idcliente
+where nombre = 'Juan' order by fecha_orden;
+	//Lo que hago es que traigo mas campos de clientes y un poco de campo
+	  de ordenes que coincida en este caso lo unico es el id
+	↑↓ con alias
+select cli.nombre, cli.apellido, ord.id_orden
+from clientes cli
+left join ordenes ord on cli.idcliente = ord.idcliente;
+	
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Left Join---
+
+Enlaces entre tablas 
+retorna todo los registros de la tabla derecha y los que coincida en la tabla
+izquierda
+
+left join --trae todo de la izquierda y de la derecha solo lo que coincida con la izquierda
+right join --al contrario
+full outer join --trae toda las fila
+	----------------
+	-----Codigo-----
+select ordenes.id_orden, clientes.nombre, clientes.apellido
+from clientes
+right join ordenes on ordenes.idcliente = clientes.idcliente
+order by ordenes.id_orden
+	//muestra preferencia a la derecha que seria la tabla ordenes
+	  si cambio a clientes seria como left join
+	
+-------------------------------------------------------------------
+-------------------------------------------------------------------  
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Full Join---
+
+Enlaces entre tablas 
+Retorna todo los registros coincidan o no
+
+	----------------
+	-----Codigo-----
+select ordenes.id_orden, clientes.nombre, clientes.apellido
+from clientes
+full join ordenes on ordenes.idcliente = clientes.idcliente
+order by ordenes.id_orden
+	//trae todo los registros aunque sea al reves las tablas
+	
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Union---
+
+es usado para combinar un conjunto de resultados de 2 o mas columnas
+!!Se debe tener el mismo número de columnas y ambas columnas deben tener
+  el mismo tipo de datos
+
+	----------------
+	-----Codigo-----
+select direccion, contacto, pais, ciudad from clientes
+union
+select direccion, contacto, pais, ciudad from suplidores
+	//hace union 2 tablas con el mismo campo y datos
+
+select direccion, contacto, pais, ciudad from clientes
+union all
+select direccion, contacto, pais, ciudad from suplidores
+	//con "all" para ver datos duplicados que puedan existir
+
+select 'clientes' as Tipo, direccion, contacto, pais, ciudad from clientes
+union all
+select 'suplidor' as Tipo, direccion, contacto, pais, ciudad from suplidores
+	//para saber de que tabla son
+
+select 'clientes' as Tipo, pais, ciudad from clientes where pais = 'Peru'
+union all
+select 'suplidor' as Tipo, pais, ciudad from suplidores where pais = 'Peru'
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+ 
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Group by---
+
+Funcion de sql que agrupa fila que tienen los mismos valores en el resultado
+de una consulta se usa mucho con (Count(), Max(), Min(), Sum(), Avg())
+
+	----------------
+	-----Codigo-----
+select count(idcliente) as cantidad, pais  //digo que seleccione y recontee
+from clientes				    todo los clientes y agrupe por pais
+group by pais;				    que me dara de cada pais su cantidad
+					    de clientes
+	
+select max(idcliente) as cantidad, pais  //digo que seleccione el maximo id que 
+from clientes				   encuentre por pais en la tabla
+group by pais order by cantidad;
+
+select min(idcliente) as cantidad, pais  //digo que seleccione el minimo id que 
+from clientes				   encuentre por pais en la tabla
+group by pais order by cantidad;
+
+select avg(idcliente) as cantidad, pais  //trae el promedio de cada pais osea
+from clientes				   que trae del 1 al 20 el promedio del
+group by pais;				   pais es 10
+
+	///con left join
+select ve.nombre, count(o.idorden) as "Cantidad de ordenes"
+from ordenes o
+left join vendedor ve on ve.id_vendedor = o.id_vendedor
+group by ve.nombre
+
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Having---
+
+es para hacer filtros a consultas donde estemos trabajando con otra funciones de
+agrupación "having es como where" solo que se debe usar cuando utilizemos otra
+funcion de agrupación
+
+	----------------
+	-----Codigo-----
+select count(idcliente), pais
+from clientes group by pais
+having count(idcliente) > 5
+order by count(idcliente) desc;
+		///digo que seleccione cantidad y agrupe por pais y que solo
+		   muestre las cantidades mayores a 5 y ordene por cantidad(idcliente)
+		!!Dato aqui no vale where porque estamos agrupando
+
+select v.nombre, count(o.idorden) as "cantidad ordenes"
+from ordenes o
+inner join vendedor v on o.id_vendedor = v.id_vendedor
+where nombre like '%Ana%' or nombre like '%Pedro%'
+group by nombre
+having count(o.idorden) > 2;
+	///seleciona de la tabla vendedor su nombre y cuenta de la tabla orden
+	su idorden con alias "cantidad ordenes" enlazando la 2 tablas con inner join
+	donde nombre comiense con Ana o con Pedro agrupando los nombres
+	Teniendo(having) la cuanta de id que sea mayor a 2
+	
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Subconsultas---
+
+una consulta completa que aparece cuando colocamos nuestra clausala wehre o having
+en una sentencia sql
+	!!!la subconsulta debe ir entre parentesis
+	!!!se debe especificar solo una columna o experesion
+	!!!usar con in, any, all y exists
+	!!!no pueden contener between ni like
+	!!!no pueden contener order by ni update y delete
+
+	----------------
+	-----Codigo-----
+//Cuales empleados ganan mas o igual al salario promedio
+
+1ro se hace la sub consulta
+(select avg(sueldo) from empleados) //con esto saco el salario promedio
+2do 
+select id_empleado, nombre, apellido, sueldo
+from empleados where sueldo >= (select avg(sueldo) from empleados)
+	//selecciono el idempleado mas nombre... de la tabla empleados donde sueldo
+	sea mayor o igual al promedio
+
+
+//Buscar todos los nombres de clientes con idcliente de Perú	
+select nombre, ciudad from clientes
+where idcliente in (select idcliente from clientes where pais = 'Peru')
+	//selecciona el nombre mas ciudad de la tabla clientes donde idcliente sean(in) igual
+	a los clientes de peru in es (sean)
+
+select nombre, ciudad from clientes
+where idcliente = any (select idcliente from clientes where pais = 'Peru')
+	//selecciona el nombre mas ciudad de la tabla clientes donde idcliente coincidad(any) igual
+	a los clientes de peru any es cualquier coincidencia que viene en la subconsulta
+
+-------subconsultas con exists, not exists
+//Cuales clientes han comprado Lapices.
+1ro la subconsulta
+(select * from detalles d where f.numero = d.numerofactura
+and d.artiuculo = 'Lapiz');
+	//selecciona todo de la tabala detalles donde  tabla factura numero es igual a tabla
+	detalles numerofactura y tabla detalles articulo sea igual a lapiz
+
+select cliente, numero, fecha
+from facturas f
+where exists
+	(select * from detalles d where f.numero = d.numerofactura
+	 and d.articulo = 'Lapiz')
+	//seleccinamos clientes numeros.. de la tabla facturas en donde existan una coincidencia
+	con el articulo lapiz
+
+select cliente, numero, fecha
+from facturas f
+where not exists
+	(select * from detalles d where f.numero = d.numerofactura
+	 and d.articulo = 'Lapiz')
+	//aqui solo me muestra los que no han comprado lapices
+
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Isnull(), Coalesce()---
+
+
+	----------------
+	-----Codigo-----
+select nombre, precio_unidad, isnull(vendidos, 0) as vendidos
+from productos;
+	//selecciona nombre, precio_unidad y todo que tengan valores nulos en la columna
+	vendidos lo ponga 0 en la tabla productos
+	
+select nombre, precio_unidad, isnull(existencia + vendido,0) as vendidos
+from productos;
+
+	COALESCE es lo mismo que isnull
+
+-------------------------------------------------------------------
+------------------------------------------------------------------- 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+---Case---
+
+
+	----------------
+	-----Codigo-----
+///1. Ver articulos de mi inventario con existencia normal
+///2. Ver articulos que nesecitan ser pedidos
+///3. Ver articulos menos vendidos
+select nombre, cantidad,
+case
+   when cantidad > 30 then 'Articulo con sobre-existencia'
+   when cantidad < 10 then 'Se deb realizar pedido'
+   else 'Existencia normal'
+   end as Inventario
+from articulos;
+	//select nombre y cantidad
+	En caso de(case) 
+	   cuando(when) el campo cantidad tenga un valor mayor a 30 entonces(then) dira
+	   'Artiuclo con sobre-existencia'
+	   cuando(when) cantidad sea menor que 10 entonces me va traer 'Se debe realizar pedido'
+	   por lo tanto lo que no cumple con esos 2 de arriba dira 'Existencia normal'
+	   end(finalizo) con alis inventario 
+	de la tabla articulos
+	
+//Generar un reporte con nombre pais y ciudad de los clientes
+//organizar el reporte por ciudad, en caso de que el
+//cliente no tenga ciudad, organizar por pais
+
+select nombre, ciudad, pais
+from clientes
+order by
+(case
+    when ciudad is null then pais
+    else ciudad
+  end)
+
+-------------------------------------------------------------------
+------------------------------------------------------------------- 

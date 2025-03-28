@@ -1,0 +1,169 @@
+
+██████╗░██╗░░░██╗████████╗██╗░░██╗░█████╗░███╗░░██╗
+██╔══██╗╚██╗░██╔╝╚══██╔══╝██║░░██║██╔══██╗████╗░██║
+██████╔╝░╚████╔╝░░░░██║░░░███████║██║░░██║██╔██╗██║
+██╔═══╝░░░╚██╔╝░░░░░██║░░░██╔══██║██║░░██║██║╚████║
+██║░░░░░░░░██║░░░░░░██║░░░██║░░██║╚█████╔╝██║░╚███║
+╚═╝░░░░░░░░╚═╝░░░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝
+
+
+__________________	        	__________________
+__________________OPERADORES LOGICOS    __________________
+And(Conjucion)  and	true and true == TRUE
+Or(Disyuncion)  or	false or false == FALSE
+Negacion	not	
+
+Prioridad de los Operadores en General
+1. ()
+2. **
+3. *, /, mod, not
+4. +, -, and
+5. >, <, ==, >=, <=, !=, or
+
+.lower() //convierte todo en minuscula
+.upper() //convierte todo en mayuscula
+
+__________________	        	  __________________
+__________________OPERADORES DE ASIGNACION__________________
+
+a = 0
+a += 5 #SUMA EN ASIGNACION
+a -= 2 #RESTA EN ASIGNACION
+a *= 3 #MULTIPLICACION EN ASISGNACION
+...
+
+__________________	         __________________
+__________________SALIDA DE DATOS__________________
+
+a = "aveces"
+b = "no"
+print(f"Hola {a} tienes {b} xd")
+
+
+__________________	              __________________
+__________________FUNCIONES INTEGRADAS__________________
+n = str(10)  -> tipo cadena  = "10"
+n = bin(10)  -> tipo binario = 1010
+n = hex(10)  -> tipo hexadecimal = 0xa
+n = abs(-8)   -> tipo absoluto = 8
+n = round(5.6) -> redondea = 6
+n = lent("letra") -> total character = 5
+
+__________________	                    __________________
+__________________AREA Y LONGITUD DE CIRCULO__________________
+import math
+
+radio = float(input("radio -> "))
+
+area = math.pi * radio ** 2
+longitud = 2 * math.pi * radio
+
+print(f"El area es: {area:.3f}")
+print(f"La longitud de la circuferencia es: {longitud:.3f}")
+
+__________________	       __________________
+__________________CONDICIONALES__________________
+numero = int(input("Enter a number"))
+
+if numero > 0:
+    print("the number is postivo")
+elif numero == 0:
+    print("The number is 0")
+else:
+    print("the num")
+________________________________________________________________________
+________________________________________________________________________
+		__________________	     __________________
+		__________________L I S T A S__________________
+________________________________________________________________________
+________________________________________________________________________
+list = ["lunes", "Martes"]
+print(list[1])  -> Martes
+
+print(len(list)) 1
+
+//una sublista
+print(list[0:3])  lunes, martes, miercoles
+
+print(list[0:])  muesta todo en adelante del indice 0
+--------------
+lista = [1,2,3,4,5]
+lista.append(6)  ->  pone 6 al final de la lista
+print(lista)
+
+lista = [1,2,4,5]
+lista.insert(2,3) -> pone el valor en el indice que le decimos
+
+lista = [1,2,3,4,5]
+lista.extend([6,7,8]) -> extiende los valores que le dimos al final
+
+lista = [1,2,3,4,5]
+print(3 in lista)  -> busca el valor 3 si exites o no en la lista
+
+lista = [1,2,3,4,5]
+print(lista.index(5)) -> te da el indice donde esta el valor dado
+
+lista = [1,2,3,4,5, "num", 1]
+print(lista.count(1)) -> devuelve cuantas veces encuentra el valor dado
+
+-------------
+-------------
+lista = [1,2,3,4,5, "num", 1]
+lista.pop()  -> Elimina el ultimo campo de la lista
+
+lista.pop(3) -> Elimina una fila en el indice dado
+
+lista = [1,2,3,4,5, "num"]
+
+lista.remove(5) -> Elimina el valor que le pongo
+
+lista = [1,2,5,4,3]
+lista.sort()  -> Esto lo ordena de menor a mayor
+
+list.sort(reverse = true)  -> De mayor a menor
+
+________________________________________________________________________
+________________________________________________________________________
+	    __________________	         __________________
+	    __________________T U P L A S__________________
+________________________________________________________________________
+________________________________________________________________________
+Las tuplas es una colección ordenada e inmutable de elementos, que puede contener elementos de diferentes tipos y se define utilizando paréntesis ().
+
+
+tupla = ()
+print(tupla)  -> ()
+
+tupla = (3, "Hola",6.49, [1,2,3],4)
+print(tupla[0])  ->  "Hola"
+-------------------
+tupla = (3, "Hola",6.49, [1,2,3],4)
+lista = list(tupla) -> convertir en lista
+
+print(lista) 
+
+________________________________________________________________________
+________________________________________________________________________
+	    __________________	                   __________________
+	    __________________C O L E C C I O N E S__________________
+________________________________________________________________________
+________________________________________________________________________
+
+Conjuntos es una colección desordenada de elementos únicos.
+
+conjunto = set()
+
+conjunto = {1,2,3, "Hola", 4.56} -> no puede haber una coleccion dentro de un conjuntos
+
+conjunto.add(5)
+conjunto.add("Adios")
+conjunto.add("a")	-> Agrega al conjunto pero donde sea
+print(conjunto)
+print(3 in conjunto) -> True porque 3 si esta en el conjunto
+print(3 not in conjunto) -> False
+
+# Conjuntos
+a = {1,2,3}
+b = {3,1,2}
+
+print(lean(a)) -> 3

@@ -1,0 +1,345 @@
+██████╗ ██╗  ██╗██████╗ 
+██╔══██╗██║  ██║██╔══██╗
+██████╔╝███████║██████╔╝
+██╔═══╝ ██╔══██║██╔═══╝ 
+██║     ██║  ██║██║     
+╚═╝     ╚═╝  ╚═╝╚═╝     
+                        
+
+-------------------
+print 'hola mundo';                -→    no hace falta su ()
+
+!!!
+	EN PHP NO ES TAN OBLIGATORIO PONERLE EL TIPO DE DATO !!!!
+
+!!!!
+	DIFERENCIA COMILLAS DOBLES Y SIMPLES
+
+	echo "este numero es: $numero" → este numero es: 3.2 --  SI
+	echo 'este numero es: $numero' → este numero es: $numero -- NO
+	echo 'este numero es: $numero'.$numero → este numero es: 3.2 -- SI
+
+-----------------------------------------------------------------------------------
+CONSTANTES:
+
+$cursos = 'php';
+echo $cursos;
+			→ Lo que pasa aqui es esto: phppython, es depende donde se pone el echo.
+$cursos = 'python';
+echo $cursos
+
+-------------------CONSTANTE. (no se puede poner otra informacion a la constante)
+	variable dato
+define('curso','php');
+echo curso;		→ php
+
+-----------------------------------------------------------------------------------
+CONDICIONALES:
+
+$numero_uno = 5;
+$numero_dos = 10;
+
+if ($numero_uno > $numero_dos) {
+    echo 'curso de php';
+}
+elseif ($numero_uno == $numero_dos) {
+    echo 'es igual';
+}
+else {
+    echo 'falso';
+}
+
+-----------------------------------------------------------------------------------
+SWITCH:
+//switch
+$curso = 'rubi';
+switch ($curso) {
+    case 'php':
+        echo 'lunes y el martes';
+        break;
+    case 'java':
+        echo 'miercoles';
+        break;
+    case 'python':
+        echo 'jueves';
+        break;
+    default:
+        echo 'no existe ese curso';
+        break;
+}
+
+
+-----------------------------------------------------------------------------------
+CICLOS:while, dowhile y for
+
+while:
+//while
+$num1 = 1;
+while ($num1 <= 10) {
+    echo $num1;
+    $num1 = $num1+1;
+}
+
+do while:
+//do while
+$num1 = 1;
+do {
+    echo $num1;
+    $num1++; 
+} while ($num1 <= 8);
+
+for:
+//for
+$num = 1;
+
+for ($num=0; $num <= 10 ; $num++) { 
+    echo $num;
+}
+
+-----------------------------------------------------------------------------------
+ARRAY:	!!VECTORES(INDICES)
+es una estructura de datos que contiene una lista de elementos
+$dias = array[]		→	Primera manera de escribir arrays	
+
+$dias = array('lunes','martes','miercoles','jueves');
+var_dump($dias);		→	var_dump Sirve para mostrar a mas detalle que echo.
+	↓
+array(4) { [0]=> string(5) "lunes" [1]=> string(6) "martes" [2]=> string(9) "miercoles" [3]=> string(6) "jueves" }
+
+------------- mejor que numeros en indices
+//arreglo,vectores,array
+$estudiante = array('nombre' => 'jean','apellido' => 'mallqui','edad'=>'18' );
+
+echo "mi nombre es : ".$estudiante['nombre'];	→	mi nombre es : jean
+
+--------------------------
+//eliminar y modificar en array
+$cursos = array('python' , 'java', 'php','html', 'css' );
+$cursos[3] = 'javascript';	→	javascript
+echo $cursos[3];
+----------------------------
+//incrementar en array
+$cursos = array('python' , 'java', 'php','html', 'css' );
+$cursos[5] = 'javascript';				!!no se pone echo o saldra error.
+print_r ($cursos);
+	↓
+Array ( [0] => python [1] => java [2] => php [3] => html [4] => css [5] => javascript )
+---------------------------
+//cuantos valores hay en el array
+$cursos = array('python' , 'java', 'php','html', 'css' );
+$cursos[5] = 'javascript';
+
+echo count($cursos);
+
+
+
+--------------------------------
+//otra forma de usar array
+$semana[0] = 'lunes';
+$semana[1] = 'martes';
+$semana[2] = 'miercoles';
+$semana[3] = 'jueves';
+$semana[4] = 'viernes';
+$semana[5] = 'sabado';
+$semana[6] = 'domingo';
+						→ cantidad de elementos: 7
+echo 'cantidad de elementos: '.count($semana);
+---
+$semana[0] = 'lunes';
+$semana[1] = 'martes';
+$semana[2] = 'miercoles';
+$semana[3] = 'jueves';
+$semana[4] = 'viernes';
+$semana[5] = 'sabado';
+$semana[6] = 'domingo';
+
+for ($i=0; $i <count($semana) ; $i++) { 
+    echo $semana[$i];
+}
+    if ($semana[$i] == 'jueves') {
+        echo 'curso de php';
+    }
+-------------------------
+//obtener el penultimo dato
+$amigos = array('jose', 'maria', 'raul','sara', 'pedro','camila','david');
+
+$posicion = count($amigos) - 1; 
+echo $amigos[$posicion];
+	↓
+     camila
+
+----------------------
+//orden alfabetica
+$amigos = array('jose', 'maria', 'raul','sara', 'pedro','camila','david');
+			→  lo pone en orden del abc
+asort($amigos);
+print_r($amigos);
+---------------------
+//orden de cabesa
+$amigos = array('jose', 'maria', 'raul','sara', 'pedro','camila','david');
+			
+rsort($amigos);
+print_r($amigos);
+-----------------------
+//se mueve pero con el indice intacto que corresponder
+$amigos = array('jose', 'maria', 'raul','sara', 'pedro','camila','david');
+
+arsort($amigos);
+print_r($amigos);
+
+*************************************
+-----------------------
+array_chunk
+------
+$amigos = array('joser <br>','maria <br>','raul <br>',
+'sara <br>','pedro <br>','camila <br>','luis <br>',
+'david <br>');
+						//Con esto separo 2 arrays de lo que hay en $amigos
+$funcion = array_chunk($amigos,2);
+print_r($funcion); 
+	-----------
+arrya_slice → elimina la cantidad de elementos que sea necesario.
+		!!Es decir que lo seleccionado apartir de 4 se elimina en adelante.
+$funcion = array_slice($amigos,4);
+print_r($funcion); 			!solo aparece 4 datos.
+
+
+**************!!$funcion = array_marge($)	→combina dos arrays separados.
+$amigos = array('joser <br>','maria <br>','raul <br>',
+'sara <br>','pedro <br>','camila <br>','luis <br>',
+'david <br>');
+
+$compañeros = array('xd','xdland','karmanland','tortillaland');
+
+$funcion = array_marge($amigos,$compañeros);
+print_r($funcion); 
+
+***********!!!!!!!!!!
+//saber el ultimo dato del array!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$amigos = array('joser <br>','maria <br>','raul <br>',
+'sara <br>','pedro <br>','camila <br>','luis <br>',
+'david <br>');
+
+
+$funcion = array_pop($amigos);
+print_r($funcion); 
+
+********************
+array_pop($amigos);	→ Eliminar el ultimo array (pop)
+print_r($amigos); 
+*********************
+!!buscar en array
+$buscar = array_search('jose',$amigos);	→busca el dato pero tiene que se identico no con <br>
+print_r($buscar);
+
+*********************
+!!invertir los valores del array.
+$revez = array_reverse($amigos);
+print_r($revez); 
+
+**************************************************************************
+array// matrices(datos horizontales y verticales), arreglos, multidimensionales.
+**************************************************************************
+//matrices
+$matriz = array(
+    array(1,2,3,4,5,6),		↓→
+    array(6,7,8,9,10),
+    array(11,12,13,14,15)
+
+);
+sacar informacion de matrices
+echo $matriz[1],[1];		→ 7 	!!primero fila luego columna.
+
+**********************************************************************************
+//ciclo foreach
+$futbol = array('barcelona' =>'messi',
+'juventus'=>'cr7','tottnham'=>'kane' );
+						→ Saber los valores del array.
+foreach ($futbol as $valor => $value) {
+    echo $valor;
+}
+
+
+****************************************************************************************
+		F U N C I O N E S
+****************************************************************************************
+
+//funciones
+
+function estudiante($nombre)
+{
+    echo "nuevo estudiante $nombre<br>";
+}
+					
+estudiante('jean');
+estudiante('carlos');
+estudiante('xd');
+	↓			con esto puedo llamar varias veces a la funcion
+nuevo estudiante jean
+nuevo estudiante carlos
+nuevo estudiante xd
+-------------------------
+
+function estudiante($nombre, $apellido, $edad)
+{
+    echo "nuevo estudiante $nombre $apellido 
+    tiene $edad";
+}				→ nuevo estudiante jean mallqui tiene 18
+
+estudiante('jean','mallqui',18); !!aqui se declara los valores de las variables de la funcion
+
+-------------------
+function suma($valor1, $valor2)
+{
+    $suma = $valor1  + $valor2;
+    echo "la suma del valor $valor1 mas $valor2 es $suma";
+}
+
+suma(1,2);
+------------------------------
+!!!!return	→ retorna.
+function resta($valor1,$valor2)
+{
+    return $valor1 - $valor2;
+
+}
+$resultado = resta(10,2);
+echo "la resta es: $resultado";
+
+--------------------------------
+*********************************************************************************
+	 V A R I A B L E S   G L O B A L E S
+*********************************************************************************
+
+!!!!!!!!!!!!!Incluir valores externos a una funcion!!!!!!!!!!
+*********
+$edad = 22;
+function estudiante()
+{
+    global $edad;		→ para usar otra variable de afuera que no este en function
+    echo $edad;
+}
+
+estudiante();
+------------------------------------------------------------------------------------
+$n1 = 10;
+$n2 = 2;
+
+function suma()
+{
+    $GLOBALS["s"] = $GLOBALS["n1"]+$GLOBALS["n2"];
+
+}
+suma();
+echo $s;
+
+----------------------------------------------------------------------
+echo $_SERVER['PHP_SELF'];	→  SABER LA UBICACION DEL ARCHIVO PHP.
+echo $_SERVER['SERVER_NAME'];	→  NOMBRE DEL SERVIDOR.
+echo $_SERVER['HTTP_REFERER'];	→  URL DEL ARCHIVO.
+
+
+
+------------------------------------
+empty()		-→  si esta vacia
+isset()		-→ determina si una varible esta definida y no tiene el valor null

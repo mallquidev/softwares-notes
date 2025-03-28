@@ -1,0 +1,190 @@
+					
+███╗   ██╗███╗   ███╗ █████╗ ██████╗ 
+████╗  ██║████╗ ████║██╔══██╗██╔══██╗
+██╔██╗ ██║██╔████╔██║███████║██████╔╝
+██║╚██╗██║██║╚██╔╝██║██╔══██║██╔═══╝ 
+██║ ╚████║██║ ╚═╝ ██║██║  ██║██║     
+╚═╝  ╚═══╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     
+                                     
+* Descubrir hosts y servicios en una red enviando paquetes y analizando las
+  respuestas
+* Recopilar información sobre los sistemas operativos
+* Descubrir puertos abiertos, servicios ejecutándose y sus versiones
+* Descubrir vulnerabilidades
+	________________________________________________________
+	________________________________________________________
+
+* PUERO DE RED  (es donde corren los servicios)
+* DIRECCION IP	(identificador único de un dispositivo en una red)
+* DIRECCION MAC	(identificador único físico de un dispositivo en una red)
+* MASCARA DE RED (nos permite gestionar o saber a que red pertenece cierta ip)
+
+__________________	        		   __________________
+__________________E S C A N E O  D E  P U E R T O S__________________
+
+El escaneo de puertos es una técnica utilizada para descubrir puertos abiertos
+en un sistema, siendo una parte esencial de la auditoria de seguridad de la red.
+
+Permite identificar servicios en ejecución y potenciales puntos de entrada para 
+ataques
+
+
+__________________	        			        __________________
+__________________E S C A N E O  A C T I V O  O  P A S I V O?__________________
+
+Mientras que el escaneo activo es mas directo y preciso, su detección es mas sencilla
+y puede ser mas lento debido a las medidas de seguridad del sistema objetivo.
+
+El escaneo pasivo, siendo mas discreto, ofrece una via menos intrusiva, aunque puede no
+ser tan detallado. la elección entre uno y otro dependerá de los objetivos específicos y del contexto del analista.
+
+__________________	        		 	__________________
+__________________E S T A D O  D E  L O S  P U E R T O S__________________
+
+Lo puertos pueden
+
+* Open: puerto abierto y listo para dar servicio
+* Closed: puerto cerrado, sin servicio
+* Wrapped: 
+* Filtered:
+
+__________________	        	            __________________
+__________________3 W A Y  H A N D S H A K E__________________
+
+El 3-Way Handshake es un procedimiento en TCP/IP, para establecer una conexión
+entre dos dispositivos en una red.
+
+1. SYN(Synchronize)
+2. SYN-ACK (Synchronize-Acknowledgment)
+3. ACK (Acknowledgment)
+
+__________________	 __________________
+__________________P I N G__________________
+Hacer ping sirve para varias cosas importantes en la administración y diagnóstico de redes:
+* Verificar la conectividad
+* Medir el tiempo de respuesta
+* Diagnosticar problemas de red
+* Determinar la perdida de paquetes
+
+ejemplo:
+ping 8.8.8.8	// Enviando paquetes ICMP a uno de los servidores DNS publico de google
+
+ping 192.168.100.120 //Enviando ping a una maquina de mi red
+ 
+
+__________________	 				     __________________
+__________________D E S C U B R I M I E N T O  D E  H O S T S__________________
+
+	E S C A N E O   B A S I C O   C O N   N M A P
+
+El comando nmap seguido de un dominio, dirección IP, o red inicia un escaneo básico 
+identificando dispositivos activos y servicios disponibles. Es el primer paso entender
+la superficie de ataque de un objetivo
+
+EJEMPLO:
+* nmap [RED]
+
+nmap 192.168.100.0/24	//ejecuta un escaneo de red con Nmap para descubrir 				  
+						dispositivos en el rango de direcciones IP especificado
+
+----------------------------------------
+--USO DE -SN PARA DESCUBRIMIENTOS DE HOSTS
+
+2-ESCANEO DE PING(PING SCAN) -sn O -sP
+
+La opcion de -sn o -sP omite el escaneo de puertos, centrado la tarea en el 
+descubrimiento de hosts activos mediante ping.
+
+Es ideal para enumerar dispositivos en una red sin realizar un analizis profundo de 
+los servicios que ofrecen.
+
+EJEMPLO:
+	nmap 192.168.100.0/24 -sn  //realiza un escaneo de ping para descubrir qué hosts 
+								están activos en el rango de direcciones IP 
+								especificado, sin escanear los puertos abiertos.
+
+2 USANDO sP:
+	nmap 192.168.100.120 -T5 -sP //hago una busqueda a ese ip rapida por el T5 pero
+								   solo quiero saber si esta activo o no nada mas
+--------------------------------------------
+--ESPECIFICANDO HOST Y REDES PARA EL ESCANEO
+
+iL <archivo>: Lee desde un archivo una lista de direcciones para escanear
+
+<IP1 IP2 IP3>: Escanea las direcciones IP especificas listadas.
+
+<IP-IP>: Escanea un rando de direcciones IP, util para analisis de redes grandes
+
+EJEMPLO:
+	nmap 192.168.100.135 192.168.100.138 -sn //Con esto hago un escaneo de ping solo
+											   a esas 2 ips 
+
+Creo un archivo con ips y para leerlo debo hacer esto
+	nmap -iL ips-mired -sn	//con esto realizo la lectura de ips del archivo
+
+
+
+	E S C A N E O  A V A N Z A D O  N M A P
+
+-P <puerto/es>: Especifica los puertos a escanear, pudiendo ser individuales, listas
+				separadas por comas o rangos.
+
+-T<0-5>: Ajusta la velocidad del estado, donde T0 es el mas lento pero menos detectable
+		 y T5 el mas rapido pero potencialmente mas detectable
+
+-oN <archivo>: Guarda el resultado del escaneo en un archivo, utilizando un formato
+			   legible para humanos
+
+EJEMPLO:
+	nmap 192.168.100.133 -p 22,23 -T5 -oN escan-192.168.100.133
+			//lo que hago es escanear esa ip y buscar puertos abierto pero solo el
+			  22 y 23 si estan abiertos lo demas omitir, luego con un T5 para que sea
+			  rapido y tambien guardar toda la información en escan-192.168.100.133
+
+--------------------------
+--ESCANEO TCP CONNECT (-sT)
+
+El escaneo TCP Connect (-sT) es el modo de escaneo predeterminado en Nmap
+
+Se utiliza el protocolo TCP para establecer una conexion completa con cada puerto
+del objetivo y determinar si esta abierto o cerrado
+
+Aunque este metodo es menos intrusivo que otros y es detectable, su finalidad lo 
+convierte en una opcion valiosa para el analisis inicial de un red.
+
+EJEMPLO:
+	nmap 192.168.100.137 -T5 -sT
+			//realizo una busqueda a esa ip con una velocidad T5 y solo quiero
+			  saber los puertos abiertos
+
+------------------
+--ESCANEO SYN (-sS)
+
+Conocido como escaneo de puertos TCP SYN o escaneo "half-open", este metodo envia un 
+paquete SYN y espera un respuesta SYN/ACK para determinar el estado de puerto
+
+Un paquete SYN/ACK recibido indica que el puerto esta abierto, mientras que un RST
+indica que esta cerrado.
+
+Es popular por su rapidez y porque no completa la conexion TCP, lo que puede hacerlo
+menos detectable frente a ciertos sistemas de monitoreo
+
+EJEMPLO:
+	sudo nmap 192.168.100.130 -T5 -sS
+			//se caracteriza por enviar un paquete SYN al puerto de destino y esperar 
+			una respuesta. Si se recibe un paquete SYN/ACK, se interpreta como que el
+			puerto está abierto, mientras que si se recibe un paquete RST, se interpreta
+			como que el puerto está cerrado
+
+------------------
+--ESCANEO UDP(-sU)
+
+El escaneo UDP (-sU) busca puertos UDP abiertos, esencial para identificar servicios
+que utilizan este protocolo, como DNS y SNNP
+
+Dado que UDP no requiere una conexion establecida, este escaneo puede ser mas lento Y
+menos confiable que los escaneos TCP.
+
+Sim embargo, tiene la ventaja de ser capaz de atravesar algunos cortafuegos y
+filtros de paquetes sin inspeccion de estado, ofrenciendo un metodo de sondeo mas
+sigiliso en ciertos contextos.

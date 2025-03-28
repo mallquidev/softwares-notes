@@ -1,0 +1,339 @@
+███╗   ███╗██╗   ██╗███████╗ ██████╗ ██╗     
+████╗ ████║╚██╗ ██╔╝██╔════╝██╔═══██╗██║     
+██╔████╔██║ ╚████╔╝ ███████╗██║   ██║██║     
+██║╚██╔╝██║  ╚██╔╝  ╚════██║██║▄▄ ██║██║     
+██║ ╚═╝ ██║   ██║   ███████║╚██████╔╝███████╗
+╚═╝     ╚═╝   ╚═╝   ╚══════╝ ╚══▀▀═╝ ╚══════╝
+                                             
+--------------------
+--ABRIR MYSQL SERVER
+
+mysql -u root -p	// mysql para iniciarl el cliente mysql 
+			-u especifica el nombre de usuario mysql
+			root es el nombre de usuario mysql
+			-p solicita el password del usuario mysql 
+
+--------------------------------
+--VER TODO LOS USUARIOS DE MYSQL
+
+SELECT User, Host FROM mysql.user;
+
+
+------------------------------------------
+--VER PRIVILEGIOS DE UN USUARIO ESPECIFICO
+
+SHOW GRANTS FOR 'heimdall'@'localhost';
+
+
+--------------------------------------------------
+--CONCEDER PERMISOS DE USUARIO A UNA BD ESPECIFICA
+
+GRAN ALL PRIVILEGES ON name_db.* TO 'heimdall'@'localhost' INDENTIFIED BY
+'tu_password';
+
+FLUSH PRIVILEGES;
+
+	e x p l i c a c i o n
+GRANT ALL PRIVILEGES: Otorgo privilegios posibles a un usuario como 'CRUD'.
+
+ON name_db.*: Especifica a que base de datos y tablas se aplicaran los
+	      Privilegios en este caso a todas las tabla ('*') dentro de db.
+
+TO 'heimdall'@'localhost': Especifica el nombre de usuario y el host aqui
+			   esta dando los privilegios al usuario heimdall
+			   que se conecte desde localhost.
+
+IDENTIFIED BY 'tu_password': Establece el password del usuario heimdall.
+
+FLUSH PRIVILEGES: Este comando recarga los privilegios  de la base de datos
+		  haciendo efectivos inmediatamente los cambios realizados.
+
+-----------------------------------------------------
+DESCRIBE tblEmpleados;
+	saber con que tipo de dato esta hecho los campos de la tabla
+
+TRUNCATE TABLE tblEmpleados;
+	sirve para eliminar todo los datos de la tabla sin elimina la estructura
+
+RENAME TABLE tblEmpleados TO tblEmployee;
+	sirve para cambiar el nombre de la tabla
+
+DROP VIEW vista_alumno_sin_salon;
+	elimina una tabla vista
+_____________________________________
+_____________________________________
+
+L I M I T
+
+SELECT * FROM tblEmployee LIMIT 4;
+	para saber los primeros 4 empleados de la tabla
+ 
+
+SELECT * FROM tblEmployee LIMIT 4, 5;
+	para saber los 5 primeros pero que empieze despues de los 4 primeros empleados
+	y solo me mostrata esos 5
+
+_____________________________________
+_____________________________________
+D E L E T E
+
+DELETE FROM empleados WHERE apellido_empleados = 'Perez' OR apellido_empleados = 'Lopez';
+
+_____________________________________
+_____________________________________
+A L T E R
+
+ALTER TABLE tblAlumno DROP COLUMN grado;
+	elimina un campo de una tabla
+
+ALTER TABLE tblAlumno ADD COLUMN idSalon INT NOT NULL AFTER ID
+	agrega un campo en la tabla y dice despuesde del id se agregara ese campo
+
+_____________________________________
+_____________________________________
+C O N S T R A I N T
+
+CREATE TABLE tblAlumno(
+    id_alumno INT AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    id_grado INT,
+    PRIMARY KEY(id_alumno),
+    CONSTRAINT fk_id_grado
+    FOREIGN KEY (id_grado) REFERENCES tblGrado(id_grado)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+	creo una constraint con un nombre especifico con foreign key y en cascada se 	eliminara los datos relacionados con la otra tabla y lo mismo con UPDATE
+
+_____________________________________
+_____________________________________
+I N N E R  J O I N
+
+SELECT a.nombre, g.nombre_grado
+FROM tblAlumno AS a
+INNER JOIN tblGrado AS g
+ON a.id_grado = g.id_grado;
+
+	saber lo estudiantes que estudian tal hora
+SELECT a.nombre AS alumno,m.nombre AS materia, c.hora
+FROM clase AS c
+INNER JOIN alumno AS a ON c.idAlumno = a.id
+INNER JOIN materia AS m ON c.idMateria = m.id
+WHERE c.hora BETWEEN '8:00' AND '10:00';
+
+
+_____________________________________
+_____________________________________
+V I S T A S  (T A B L A  V I R T U A L)
+
+ALTER
+CREATE VIEW vista_alumno_sin_salon AS
+SELECT * 
+FROM tblAlumno
+WHERE id_salon is null;
+
+SELECT * FROM vista_alumno_sin_salon;
+
+	creo una tabla virtual donde vere solo los alumnos que no tienen salones
+
+----------------
+CON 3 TABLAS PARA SABER LOS ALUMNOS EN QUE MATERIA ESTAN.
+TABLAS USADAS: tblAlumno, tblMateria, tblClase
+
+CREATE VIEW vista_alumnos_en_materia AS
+SELECT count(m.id_materia) cantidad_alumno, m.nombre AS materia
+FROM tblClase AS c
+INNER JOIN tblMateria AS m ON c.id_materia = m.id_materia
+INNER JOIN tblAlumno AS a ON c.id_alumno = a.id_alumno
+GROUP BY m.id_materia;
+
+_____________________________________
+_____________________________________
+V A R I A B L E S
+
+SET @nota_reprobado = 4;
+SET @nota_minimo = 5;
+SET @nota_excelente = 10;
+
+SELECT * FROM tblAlumno WHERE nota>=@nota_minimo;
+	hacer comparacion para saber las notas
+---------------------------
+---------------------------
+SABER POR CANTIDAD DE ESTUDIANTES QUE APROBARON O LO CONTRARIO
+
+SET @nota_reprobado = 85;
+SET @cant_reprobado = 0;
+
+SET @nota_minimo = 86;
+SET @cant_minimo = 0;
+
+SET @nota_excelente = 90;
+SET @cant_excelente = 0;
+
+SELECT * FROM tblAlumno;
+
+SELECT count(*) INTO @cant_reprobado
+FROM tblAlumno 
+WHERE nota<=@nota_reprobado;
+
+SELECT count(*) INTO @cant_minima
+FROM tblAlumno
+WHERE nota>=@nota_minima;
+
+SELECT count(*) INTO @cant_excelente
+FROM tblAlumno
+WHERE nota>= @nota_excelente;
+
+SELECT @nota_reprobado, @cant_minima, @cant_excelente;
+_____________________________________
+_____________________________________
+S T O R E   P R O C E D U R E
+
+DELIMITER //
+CREATE PROCEDURE alumnos_con_letra(in letra char)
+BEGIN
+SELECT *
+FROM tblAlumno
+WHERE nombre LIKE CONCAT('%', letra, '%');
+END//
+
+call alumnos_con_letra('j');
+	
+	SABER CUANTOS ALUMNOS EMPIEZAN SU NOMBRE CON 'J'
+
+---------------------------
+---------------------------
+	CON "OUT"(PARAMETROS DE SALIDA) PARA ALMACENARLO
+
+DROP PROCEDURE alumnos_con_letra;
+DELIMITER //
+CREATE PROCEDURE alumnos_con_letra(in letra char, out numero int)
+BEGIN
+SELECT count(*) into numero
+FROM tblAlumno
+WHERE nombre LIKE CONCAT('%', letra, '%');
+END//
+
+call alumnos_con_letra('j',@cantidad_j);
+SELECT @cantidad_j;
+
+
+_____________________________________
+_____________________________________
+
+F U N C I O N E S
+	*Solamente pueden tener parametros de entrada IN y no parametros de salida OUT.
+	*Las funciones deben retornar en un valor con algun tipo de dato definido.
+	 Los procedimientos pueden devolver uno o mas valores a traves de parametros o
+	 puede que no devuelva ninguno.
+
+
+# F U N C I O N E S
+DELIMITER //
+
+CREATE FUNCTION numero_letras(letra CHAR) RETURNS INT
+READS SQL DATA
+BEGIN
+    DECLARE numero INT;
+    SELECT COUNT(*) INTO numero FROM tblAlumno WHERE nombre LIKE CONCAT('%', letra, '%');
+    RETURN numero;
+END//
+
+DELIMITER ;
+
+SELECT numero_letras('j');
+
+__________________________________________________________________________
+__________________________________________________________________________
+P R O C E D U R E    F U N C I O N E S    EJEMPLOS
+
+***********************************
+***********************************
+P R O C E D U R E  S T O R E
+DELIMITER //
+
+CREATE PROCEDURE operaciones_p(in numero1 int, in numero int, out res_mul int, out res_suma int)
+BEGIN
+  SELECT numero1 * numero2, numero1 + numero2 into res_mul, res_suma;
+END //
+
+DELIMITER ;
+
+SET @res_mul = 0;
+SET @res_suma = 0;
+
+CALL operaciones_p(3,3,@res_mull, @res_suma);
+SELECT @res_mul, @res_suma;
+
+***********************************
+***********************************
+F U N C I O N E S
+
+DELIMITER //
+
+CREATE FUNCTION operaciones_f(numero1 int, numero2, int) RETURNS INT
+  SET @res_mul=0;
+  SELECT numero1 * numero 2 INTO @res_mul;
+  RETURN @res_mul;
+END//
+
+DELIMITER ;
+
+SELECT operaciones_f(3,3);
+
+_____________________________________
+_____________________________________
+T R I G G E R  (Disparador)
+
+DELIMITER //
+
+CREATE TRIGGER log_tabla_alumno AFTER INSERT ON alumno
+FOR EACH ROW BEGIN
+    INSERT INTO tblAcciones (accion) VALUE ('Se cre un registro en alumno');
+END //
+
+DELIMITER ;
+
+	Lo que hace es crear un disparador que cuando se inserte un alumno en la tabla
+	tblAlumno directamente hara que en la otra tabla tblAcciones se inserte un valor
+	
+    INSERT INTO tblAcciones (accion) VALUE (CONCAT('De nombe: ', NEW.nombre))
+	Con esto se a mas detalles quien agregue de la tabla
+
+_____________________________________
+_____________________________________
+A D M I N I S T R A R   P R I V I L E G I O S   D E   L O S   U S U A R I O S
+
+SELECT * FROM mysql.user;
+
+GRANT USAGE ON db_escuela.tblAlumno TO usuarioOne IDENTIFIED BY 'password123'
+	//Con esto digo que este usuario tendra permisos a esa db y esta tabla solo a eso
+
+GRANT USAGE ON *.* TO usuarioOne IDENTIFIED BY 'password123'
+	//Doy permisos a toda mi db y tablas
+
+**********************
+ELIMINAR USUARIO
+
+DROP user usuarioOne;
+
+**********************
+DAR PERMISO (privilegios)
+
+GRANT SELECT, DELETE ON  *.* TO usuarioOne;
+	//Tiene permiso para solo eliminar
+
+GRANT ALL PRIVILEGES ON  *.* TO usuarioOne;
+	//Tiene todo los permisos para el control de la base de datos
+
+**********************
+ELIMIAR PERMISOS (privilegios)
+
+REVOKE ALL PRIVILEGES ON *.* TO gestor;
+
+
+**********************
+VER PERMISOS QUE TIENE UN USUARIO
+
+SHOW GRANTS FOR usuarioOne;
+	//ver todo los privilegios que tiene

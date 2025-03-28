@@ -1,0 +1,1031 @@
+
+     ██╗███████╗
+     ██║██╔════╝
+     ██║███████╗
+██   ██║╚════██║
+╚█████╔╝███████║
+ ╚════╝ ╚══════╝
+    ___  ________      
+   |\  \|\   ____\     
+   \ \  \ \  \___|_    
+ __ \ \  \ \_____  \   
+|\  \\_\  \|____|\  \  
+\ \________\____\_\  \ 
+ \|________|\_________\
+           \|_________|
+                       
+                       
+
+new Date() me vota la fecha y hora actual a la hora que puse ese codigo
+
+const fecha = new Date()
+fecha.getFullYear()		//Esto ya es obvio que me votara
+fecha.getMonth()
+fecha.getDay()
+
+__________________	        	__________________
+__________________OPERACIONES MATEMATICOS__________________
+
+
+------
+Codigo	
+------
+Math.round(69.5) //Redondea en este caso seria 70
+Math.ceil(69.4)  //Cuando hay un decimal igual lo redondea a 70 <- 70.4
+Math.floor(69.9) //No redonde el resultado seria 69
+Math.sin(45)     //Nos trae el seno de un angulo que es (0.85090..)
+Math.exp(2)	 //Nos da la exponecial del numero que es(7.389056..)
+Math.log(10)	 //Calcula el logaritmo de un numero que es(2.3025..)
+Math.abs(-10)	 //Valor abasoluto de un numero que es(10)
+Math.max(10, 50) //Calcula el valor maximo de secuencia que es(50)
+		 //Alrevez si pongo min
+
+Math.random()	 //Trae valor aleatorio en decimal que puede ser(0.5123...)
+Math.round(Math.random()*10) //Trae numero entero del 0 al 10
+
+Math.sqrt(81) 	 //Saca la raiz cuadrada
+Math.pow(4, 2) 	 //Calcula el exponente de un numero que es(16) 4x4
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+__________________	         	  	__________________
+__________________F U N C I O N E S   S T R I N G__________________
+
+------
+Codigo	
+------
+palabra.length	  //Ver tamaño de un texto cuantos caracteres tiene
+palabra.slice(0,5)//Pone la catidad definida de un texto en este caso
+		    pondra los 5 primeros caracteres de una palabra del indice 0 al indice5
+palabra.slice(0,5)//Substring == slice
+
+saludo.replace('Hola', 'adios') //Cambia valores en un texto
+
+palabra.toUpperCase() //Pone el texto en mayuscula
+palabra.toLowerCase() //Pone el texto en minuscula
+
+let letras = ['a','b'];
+let palabra = ['xd','dx']
+letras.concat(palabra) //Une texto ['a','b','xd','dx']
+
+palabra.trimStart() //Eimina todo el espacio de la izquierda
+palabra.trimEnd()   //Elimina todo el espacio de la derecha
+
+palabra.split('Script') //corta caracter decidida ejemplo la palabra es JavaScript
+			 solo quedara Java y debe ser lo mismo
+
+palabra.split(" ") //se utiliza para dividir una cadena en un array de 		      subcadenas basándose en un separador especificado
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+__________________	    __________________
+__________________A R R A Y S__________________
+
+------
+Codigo	
+------
+
+//Declaracion de un array
+let numeros = [15,80,650,50.30,-10];
+document.write('Elementos: ', numeros)
+	se ve asi en html
+Elementos 15,80,650,50.30,-10
+
+
+,numeros[0]	 //Esto me muestra el primer array que es 15
+,numeros[numeros.length-1]//Para saber cual es el ultimo del array
+
+,numeros.toString() //lo convierto a texto todo
+
+,letras.concat(numeros) //une tipos de arrays
+
+//////POP, PUSH, SHIFT y UNSHIFT
+numeros.pop()	 //Elimina el ultimo elemento
+numeros.shift()  //Elimna el primer elemento
+numeros.push(500)//Agrega elemento al final
+numeros.unshift  //Inserta elemento al inicio
+
+numero.splice(2,3)//Elimina elementos a partir de un punto 
+		  digo que del indice 2 se lleve 3 elementos
+
+numero.slice(1,4)//Copia un array del indice 1 hasta el indice 3 4 ya no
+		--yo que se es asi solo atras del que diga donde copia
+
+objetos.sort()//Organiza array en modo alfabetico
+
+objetos.reverse()//lo pone de fin a inicio 
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+__________________	                  __________________
+__________________C O N D I C I O N A L E S__________________
+
+------
+Codigo	
+------
+let nombre, edad
+nombre = prompt('Ingrese su nombre...');
+edad = prompt('Ingrese su edad...')
+edad = parseInt(edad)
+
+if (edad >= 18){
+    document.write('Bienvenido! ', nombre);
+}else{
+    if(edad<18){
+	document.write(nombre, 'Eres menor de edad ');
+    }else{
+    	document.write('No has ingresado datos');
+    }
+}
+
+_________	           _________
+_________OPERADORES LOGICOS_________
+
+&&(y)	||(o)
+
+_________	      _________
+_________SWITCH - CASE_________
+
+let color
+color = prompt('Ingrese un color: Rojo/Verde/Azul')
+
+switch(color){
+   case 'rojo':
+	document.write('Ingreso rojo');
+	break;
+   case 'verde':
+	document.write('Ingreso verde');
+	break;
+   case 'azul':
+	document.write('Ingresó azul');
+	break;
+   default:
+	document.write('No ingreso color');
+	break;
+}
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+__________________	    __________________
+__________________B U C L E S__________________
+
+------
+Codigo	
+------
+_________	  _________
+_________W H I L E_________
+
+let f = 1;
+
+while (f < 10){
+  document.write('Vuelta numero ', f);
+  f++;
+}
+document.write('Fin del bucle')
+///RESULTADO == Vuelta numero1... hasta 9
+
+_________	        _________
+_________D O   W H I L E_________
+
+
+let usuario, clave, control;
+control = 0;
+usuario = prompt('Ingrese usuario...');
+clave = prompt('Ingrese su contraseña ');
+
+do {
+    if(clave != 'MIacceso33%'){
+    	clave = prompt('Contraseña incorrecta intente denuevo');
+	control = 0;
+    }else{
+  	control  = 1;
+    }
+} while (control != 1);
+document.write('Acceso correcto!')
+
+_________     _________
+_________F O R_________
+
+
+const frutas = ['manzanas','peras','uvas','naranjas'];
+
+for(let f = 0; f < frutas.length; f++){
+    document.write('Fruta: ',f,' = ', frutas[f]);
+    document.write('<br>'); //para salto de linea
+}
+
+_________	    _________
+_________F O R   I N_________
+
+let palabra = 'aeioaeiooieuaouaeiu';
+let vocal = 0;
+for(let f in palabra){
+    if(palabra[f]=='a' || palabra[f]=='e' ||
+    palabra[f]=='i' || palabra[f]=='o' ||
+    palabra[f]=='u'){
+	vocal++;
+    }
+}
+document.write('Cantidad de vocales: ', vocal);
+
+_________			      _________
+_________B R E A K  -  C O N T I N U E_________
+
+//Ejemplo quiero un bucle que aparesca del 1 al 10 obligario pero se detenga
+  en el numero pero obligatorio poner del 1 al 10
+
+
+for(let f = 0; f < 10; f++){
+    document.write(f);
+    document.write('<br>'); //salto de linea
+    if(f==3){
+    	document.write('Aqui es la vuelta: ', f);
+	document.write('<br>') //salto de linea
+	break;
+    }
+}
+	//Con eso se dentendra al numero que le diga gracias a BREAK
+
+
+
+//Ejemplo quiero quitar una letra especifica de una palabra sin que se detenga el bucle
+
+let palabra = 'Javascript';
+let resultado = '',
+
+for(let f in palabra){
+    if(palabra[f]=='a'){
+	continue;
+    }else{
+	resultado += palabra[f];
+    }
+}
+document.write(resultado);
+	//esto me devuelve Jvscript gracias a CONTINUE
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+__________________	    	   __________________
+__________________F U N C I O N E S__________________
+
+function saludar(){
+    let saludo = prompt('Ingrese un saludo');
+    alert(saludo);
+}
+
+saludar()
+	//Lo que hago es tener un bloque de codigo que hague una funcion especifica
+	  como en este caso esa funcion pide un dato y devuelve entonce yo solo lo
+	  llamo y hace su respectiva funcion
+
+
+FUNCION CON PARAMETROS
+
+let resultado;
+function suma(a, b){ //los parametros son a y b
+   a = parseInt(prompt('Ingrese primer numero '));
+   b = parseInt(prompt('Ingrese segundo numero ')); 
+   resultado = a + b;
+   alert('Resultado: ' + resultado);
+}
+
+suma();
+
+	
+FUNCIONES CON RETURN
+	//return no plasma nada pero tiene un valor ya hecho
+function suma(a, b){
+    return a+b;
+}
+document.write(suma(30,60))
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+//Escribe una función que determine si una palabra es un palíndromo.
+
+function esPalindromo(palabra) {
+    const reversa = palabra.split("").reverse().join("");
+    return palabra === reversa;
+  }
+  
+console.log(esPalindromo("mama")); // Debería imprimir true
+________________________________________________________________________
+__________________			    	   __________________
+__________________PROGRAMACION  ORIENTADA A OBJETOS__________________
+________________________________________________________________________
+es un paradigma de programacion de js
+son objetos que es una estructura que tiene propiedades y metodos
+ejemplo Carro
+ATRIBUTOS	METODOS
+tiene: 		puede:
+
+Marca		Encender()
+Color		Acelerar()
+Modelo		Frenar()
+
+otro ejemplo:
+Nombre --->  Perro
+
+	      Nombre
+Atributos --> Raza	<--- Propiedades
+	      Altura
+		
+		Dormir()
+Operaciones --> Comer()	  <--- Metodos
+		Ladrar()
+
+En conclucion es un molde para objetos que poseen la misma caracteristicas
+y que pueden recibir los mismos mensajes y responder de la misma manera.
+las clases esta definidas por los atributos el comportamiendo y las relaciones
+con otros objetos
+__________________	    
+__________________C L A S E S
+
+class Persona{
+    nombre = 'Homero';
+    apellido = 'Simpson';
+    direccion = 'Ave. Siempriva 732';
+    telefono = 365456;
+    email = 'xd@dagma.com';
+
+    trabajar(){					--> Nombre del metodo
+	return 'Trabaja en la planta nuclear';
+    }
+    estudiar(){
+	return 'Escuela de Sprinfield';
+    }
+
+}
+
+const homero = new Persona();  --> Con esto defino un objeto en JS el "new" quiere decir
+				   que estoy creando nueva instancia de tipo objeto
+				   mi constante homero ya tiene todo acceso a los atributos
+				   Persona
+document.write(homero.nombre);
+document.write(homero.trabajar());
+
+***************************
+class Animal {
+    constructor(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    saludar() {
+        console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+    }
+}
+
+const perro = new Animal("Firulais", 5);
+perro.saludar(); // Imprime: Hola, soy Firulais y tengo 5 años.
+
+
+__________________	    
+__________________H E R E N C I A
+
+class Perro extends Animal {
+    constructor(nombre, edad, raza) {
+        super(nombre, edad);
+        this.raza = raza;
+    }
+
+    presentarRaza() {
+        console.log(`Soy un ${this.raza} y me llamo ${this.nombre}.`);
+    }
+}
+
+const miPerro = new Perro("Bobby", 3, "Labrador");
+miPerro.saludar(); // Imprime: Hola, soy Bobby y tengo 3 años.
+miPerro.presentarRaza(); // Imprime: Soy un Labrador y me llamo Bobby.
+
+
+__________________	            
+__________________M É T O D O   S T A T I C
+
+class Utilidades {
+    static sumar(a, b) {
+        return a + b;
+    }
+
+    static restar(a, b) {
+        return a - b;
+    }
+}
+
+console.log(Utilidades.sumar(5, 3)); // Imprime: 8
+console.log(Utilidades.restar(5, 3)); // Imprime: 2
+
+
+__________________	   
+__________________I N S T A N C I A
+
+class Persona {
+    constructor(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    saludar() {
+        console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+    }
+}
+
+const persona1 = new Persona("Juan", 30);
+persona1.saludar(); // Imprime: Hola, soy Juan y tengo 30 años.
+
+const persona2 = new Persona("María", 25);
+persona2.saludar(); // Imprime: Hola, soy María y tengo 25 años.
+
+
+__________________			        
+__________________I N C A P S U L A C I Ó N
+
+class CuentaBancaria {
+    #saldo = 0;
+
+    constructor(saldoInicial) {
+        if (saldoInicial > 0) {
+            this.#saldo = saldoInicial;
+        }
+    }
+
+    depositar(cantidad) {
+        if (cantidad > 0) {
+            this.#saldo += cantidad;
+        }
+    }
+
+    retirar(cantidad) {
+        if (cantidad > 0 && this.#saldo >= cantidad) {
+            this.#saldo -= cantidad;
+        }
+    }
+
+    getSaldo() {
+        return this.#saldo;
+    }
+}
+
+const cuenta = new CuentaBancaria(1000);
+console.log(cuenta.getSaldo()); // Imprime: 1000
+cuenta.depositar(500);
+console.log(cuenta.getSaldo()); // Imprime: 1500
+cuenta.retirar(200);
+console.log(cuenta.getSaldo()); // Imprime: 1300
+
+________________________________________________________________________
+__________________	       	      __________________
+__________________CONTROL SELECT INDEX__________________
+________________________________________________________________________
+    <p>
+        <select name="" id="select1" onchange="ponerdatos()">
+            <option value="a">Alex</option>
+            <option value="b">Barbosa</option>
+            <option value="c">Chumbez</option>
+        </select>
+        
+    </p>
+    <p><input type="text" id="text1"></p>
+    <p><input type="text" id="text2"></p>
+    <p><input type="text" id="text3"></p>
+
+function ponerdatos() {
+  let select = document.getElementById('select1');
+  document.getElementById('text1').value = select.selectedIndex;
+  document.getElementById('text2').value = select[select.selectedIndex].text
+  document.getElementById('text3').value = select[select.selectedIndex].value
+}
+
+Agarro el index de los option y saco su text y valor y lo pinto en abajo los <p>
+
+________________________________________________________________________
+________________________________________________________________________
+E V E N T O S
+
+********************
+ONFOCUS
+
+lo que hago aqui es que cuando precione un input se ponga el valor que esta en la funcion
+
+<input type="text" id="user" onfocus="vaciar(this)" placeholder="escriba un número">
+
+function vaciar(control) {
+  control.value = 'a';
+}
+
+*********************
+*********************
+ONBLUR
+
+<input type="text" id="user" onfocus="f_focus()" onblur="f_blur()" placeholder="escriba un número">
+
+function f_focus() {
+  document.getElementById('user').value = 'xd'
+}
+
+function f_blur() {
+  if (document.getElementById('user').value=="") {
+    document.getElementById('user').style.background = 'red';
+    alert('Debe poner su usuario que es obligatorio')
+  }
+}
+
+*********************
+*********************
+open() confirmar()
+
+    <input type="button" value="abrir" onclick="abrir()">
+    <br>
+    <input type="button" value="abrir" onclick="ventana()">
+    <br>
+    <input type="button" value="salir" onclick="confirmar()">
+    <br>
+
+
+function abrir() { 
+  let ventana = open();
+  ventana.document.write('Soy otra pagina web');
+}
+
+function ventana() {
+  let ventana = open('','', 'width=400, height=250');
+  ventana.document.write('Soy otra ventana de pagina web')
+}
+
+function confirmar() {
+  let respuesta = confirm('Desea salir de la pagina');
+  if (respuesta === true) {
+    window.close()
+  }
+}
+
+*********************
+*********************
+window.location
+
+ <input type="button" value="abrir" onclick="redireccionar()">
+
+ <input type="button" value="abrir" onclick="redireccionar()">
+
+function redireccionar() {
+  if (window.confirm('DESEA SALIR DE LA PAGINA')) {
+    window.location = 'https://wikipedia.com';
+  }
+  
+}
+
+*********************
+*********************
+
+/* #pantalla */
+document.write('availHeight: ', screen.availHeight, '<br>');
+document.write('availWidth: ', screen.availWidth, '<br>');
+document.write('Colordepth: ', screen.colorDepth, '<br>');
+
+/* #Navegador */
+document.write('appName: ', navigator.userAgent)
+document.write('CookieEnabled: ', navigator.cookieEnabled)
+document.write('pluggins: ', navigator.plugins.length)
+
+*********************
+*********************
+CONTEO DE CARACTERES TEXTAREA
+
+<textarea name="" id="texto" cols="30" rows="10" maxlength="20">
+
+    </textarea>
+    <p>Carcateres disponibles:
+        <span id="cantidad">20</span>
+    </p>
+    <br>
+
+document.getElementById('texto').addEventListener('keyup', caracteres);
+function caracteres() {
+  let cant = document.getElementById('texto').value.length;
+  let disponible = 20 - parseInt(cant);
+  document.getElementById('cantidad').innerHTML = disponible;
+  if (disponible==0) {
+    alert('Cantidad de caracteres agotados');
+  }
+}
+
+
+***************************************************************
+***************************************************************
+TEMPORIZADOR setTimeout(1000) //1s
+
+<button onclick="comenzarTiempo()">xd</button>
+	
+	JS
+function comenzarTiempo() {
+  setTimeout(tiempocumplido, 5000);
+}
+function tiempocumplido() {
+  alert('Se termino el tiempo')
+}
+
+-----------
+
+<input type="number" id="tiempo">
+<button onclick="comenzarTiempo()">xd</button>
+	
+	JS
+function comenzarTiempo() {
+  let elementoSegundo = document.getElementById("tiempo").value;
+  console.log(elementoSegundo);
+  setTimeout(tiempocumplido, 1000 * elementoSegundo);
+}
+
+function tiempocumplido() {
+  alert('Se termino el tiempo')
+}
+
+---------------
+HACIENDO UN RELOJ
+
+<body onload="comenzarReloj()">
+    <h1 id="textoalarma">00:00:00</h1>
+   
+    <script src="script.js"></script>
+</body>
+
+	JS
+let elementotextoAlarma = document.getElementById('textoalarma');
+
+function comenzarReloj() {
+  setInterval(tictac, 1000)	--> setInterval se usa para ejecutar una función 						repetidamente cada cierto intervalo de tiempo.
+}
+function tictac() {
+  let tiempoActual = new Date();
+  let hora = tiempoActual.getHours();
+  let minutos = tiempoActual.getMinutes();
+  let segundos = tiempoActual.getSeconds();
+  let textHora = `${hora} : ${minutos} : ${segundos}`;
+
+  elementotextoAlarma.textContent = textHora;
+}
+
+________________________________________________________________________
+________________________________________________________________________
+C L A S S  -  (c l a s e)
+
+Una clase en programación es un modelo o plantilla para crear objetos que comparten un conjunto de características (propiedades) y comportamientos (métodos). Las clases son la base de la programación orientada a objetos (POO), permitiendo la encapsulación de datos y funcionalidades relacionadas en un solo objeto, lo que facilita la reutilización del código y la organización de la lógica del programa. Las clases en JavaScript se definen con la palabra clave `class` y pueden tener constructor, propiedades y métodos.
+
+//AQUI NO ESTAMOS CONSTRUYENDO UN OBJETO EN SI 
+//SI NO CREANDO UN CONSTRUCTOR DE UN OBJETO DE UNA CLASE
+class Papel {
+  constructor(alto, ancho){
+    this.alto = alto;
+    this.ancho = ancho;
+  }
+}
+
+--> Cuando entro en la consola y veo sus propiedades no me dara nada porque eso no es un
+objeto si no una clase la clase papel que sirve para crear nuevos "Papeles"
+
+
+let mipapel = new Papel(4,5); --> con esto creo un objeto apartir de una clase
+				  que acabe de definir
+
+-------
+class anonimous
+
+let Papel_A = class{
+  constructor(alto, ancho){   --> lo mismo de arriba
+    this.alto = alto;
+    this.ancho = ancho;
+  }
+}
+
+let Papel01 = new Papel_A(5, 8) 
+
+
+---------
+class nombrada      	--> La difencia con anonima es que tiene nombre el de aqui
+
+let Papel_B = class PapelX{
+    constructor(alto, anchi){
+	this.alto = alto;
+	this.ancho = ancho;
+    }
+}
+
+para crear otro objeto tiene que estar despues de aver creado la clase
+
+________________________________________________________________________
+________________________________________________________________________
+S U B  C L A S S
+
+una subclase es una clase que hereda propiedades y métodos de otra clase, llamada clase padre o superclase. La subclase puede agregar nuevas funcionalidades o modificar las existentes sin afectar a la superclase. Esto se logra mediante la palabra clave extends al definir la clase. Las subclases pueden acceder a los métodos y propiedades de la superclase utilizando la palabra clave super.
+
+class Deportista {
+  constructor(nombre, apellido){
+    this.nombre = nombre;
+    this.apellido = apellido;
+  }
+}
+
+class Futbolista extends Deportista{		--> subclase
+  constructor(nombre, apellido, goles){
+    super(nombre, apellido)
+    this.goles = goles;
+  }
+}
+
+let deportista1 = new Deportista('Gustavo', 'Escobar');
+					-->Esto pongo su nombre y apellido por la
+deportista1.apellido;			   opcion super
+'Escobar'
+
+let futbolista1 = new Futbolista('Rbierto', 'Fernandez', 5)
+
+futbolista1.goles
+5
+
+________________________________________________________________________
+________________________________________________________________________
+METODOS GETTER SETTER
+
+claas Ejemplo {
+   constructor() {
+  	this._algo = 0;
+   }
+
+   get algo(){			--> los get y set se ponen despues del constructor
+       return this._algo;
+   }
+   set algo(nuevoValor){
+ 	this._algo = nuevoValor;
+   }
+	    |
+}	    |
+
+el guion   `_` bajo antes del nombre de la propiedad
+se utiliza como una convencion para indicar una propiedad es privada
+y que no debe ser accedida directamente pero esta convencion no nos va inpedir ser
+accedida
+
+class Deportista {
+  constructor(nombre, apellido){
+    this.nombre = nombre;
+    this.apellido = apellido;
+  }
+}
+
+class Futbolista extends Deportista{
+  constructor(nombre, apellido, goles){
+    super(nombre, apellido)
+    this.goles = goles;
+  }
+
+  get goles(){
+    return this._goles;
+
+  }
+  set goles(nuevoGOles){
+    this._goles = nuevoGOles;
+  }
+}
+
+	EN LA CONSOLA
+let futbolista2 = new Futbolista('Jose','Feliciano', 5)
+
+futbolista2.goles	-> Nuestro metodo Getter "no esta diciendo"
+5
+futbolista2.goles = 3;  -> Nuestro metodo Setter
+3
+futbolista2.goles
+3
+
+________________________________________________________________________
+________________________________________________________________________
+J S O N
+(Javascript Objet Notation) //Notacion de objetos en JavaScript
+
+Json es un formato de texto es similar a un objeto de JS
+pero se utiliza para transmitir datos entre un servidor y una aplicacion web o etc
+WHAT IS IT?
+Es un formato de intercambio de datos estandarizado
+json siempre en comillas doble
+
+Json Example
+{
+    "nombre": "Juan Gonzales",
+    "edad": 34,
+    "estudiante": false,
+    "direccion": {
+        "calle": "Ave. Primera no.555",
+        "ciudad": "Santo Domingo"
+    },
+    "telefonos": [
+        "123-456-789",
+        "987-654-232"
+    ]
+}
+
+*"nombre": "Juan Gonzales": Una cadena que representa el nombre completo de la persona.
+
+*"edad": 34: Un número entero que representa la edad de la persona.
+
+*"estudiante": false: Un valor booleano (true o false) que indica si la persona es estudiante o no.
+
+*"direccion": { "calle": "Ave. Primera no.555", "ciudad": "Santo Domingo" }: Un objeto anidado que contiene información sobre la dirección de la persona. Tiene dos claves: 
+
+*"calle" con el valor de la calle y "ciudad" con el valor de la ciudad.
+
+*"telefonos": ["123-456-789", "987-654-232"]: Un arreglo que contiene dos números de teléfono de la persona.
+
+________________________________________________________________________
+________________________________________________________________________
+J S O N
+lectura json XMLHttpRequest()
+
+let datosJson;
+let xhr = new XMLHttpRequest(); //este objeto sirve para solicitar un objeto json
+                                //que nos de su informacion
+xhr.open('GET', 'persona.json', true)//metodo, url, true //open es para abrir una solicitud 					http
+xhr.responseType = 'json' // -> que tipo de respuesta estamos epserando
+xhr.onload = function () {
+    if (xhr.status === 200) {
+        datosJson = xhr.response;
+        let elementoTexto = document.getElementById('nombre');
+        elementoTexto.textContent = datosJson.nombre;
+    }
+}
+xhr.send()
+
+________________________________________________________________________
+________________________________________________________________________
+J S O N
+fetch
+es una función de JavaScript que se utiliza para hacer solicitudes HTTP asincrónicas a recursos en la web. Permite realizar peticiones a servidores web y recibir respuestas, lo que es fundamental para interactuar con API (interfaces de programación de aplicaciones) y obtener datos en aplicaciones web.
+
+let datoJson;
+
+fetch('persona.json')
+    .then(res => res.json()) //funcion then que dice"ENTONCES" se ejecuta atumaticamente 			     //una ves que la promesa se halla resuelvo exitosamente
+                            //se ejecuta cuando lo de adentro se cumpla
+    .then((salida) => {
+        datoJson = salida;
+        let elementText = document.getElementById("nombre");
+        elementText.textContent = datoJson.apellido;
+    })
+
+
+-----------------------
+promesa, solicitudes y respuestas
+
+promesa: (.then)
+	Es una declaracion que no se resuelve de inmediato, si no que se va resolver
+	con el tiempo.
+	Cuando hacemos una peticion a un servidor para pedir los datos un archivo json
+	lo que recibimos es un objeto que representa el estado de la peticion y a ese
+	objeto es al que llamamos promesa.
+
+	~cumplida
+	~rechazada
+	~pendiente
+
+solicitudes:
+	GET:	obtener informacion
+	POST:	enviar informacion
+	PUT:	actualizar informacion
+	DELETE:	eliminar informacion
+
+respuestas:
+	200:	respuesta completada
+	201:	elemento creado
+	204:	respuesta vacia
+	400: 	mal solicitado
+	401:	no autorizado
+
+-------------------------------
+CATCH
+(ATRAPAR)
+
+~atrapar el error y manejarlo
+es un metodo que se usa en promesas para manejar posible errores y hacer una funcion
+especifica en tal caso que la promesa no se cumpla
+
+let datoJson;
+
+fetch('persona.json')
+    .then(res => res.json())  //funcion then que dice"ENTONCES" se ejecuta atumaticamente 			     //una ves que la promesa se halla resuelvo exitosamente
+                            //se ejecuta cuando lo de adentro se cumpla
+    .then((salida) => {
+        datoJson = salida;
+        let elementText = document.getElementById("nombre");
+        elementText.textContent = datoJson.apellido;
+    })
+    .catch(function(error) {alert(error)}) //manejo de error
+
+________________________________________________________________________
+________________________________________________________________________
+EVENTOS
+~ acciones, sucesos, interacciones
+~ addEventListener()
+	~click
+	~doble click
+	~mouseover
+	~mouseout
+	~keydown
+
+informacion de los eventos
+	~event.target
+	~event.currentTarget
+	~event.preventDefault
+
+Evento Tiempo real:
+	~Actualizan el website sin recargar
+	~WebSocket
+	~http/2 server push
+
+________________________________________________________________________
+________________________________________________________________________
+PROGRAMACION ASYNC AND SYNC
+Operaciones Síncronas:  En las operaciones síncronas, el código se ejecuta secuencialmente, 			línea por línea, y cada operación espera a que la anterior se 				complete antes de continuar. Esto significa que si hay una 				operación bloqueante que tarda en completarse, todo el programa se 			detendrá hasta que termine esa operación.
+	ejemplo:
+console.log('inicio sincrono');
+
+for(let i = 0; i<= 10; i++){
+   console.log(i);
+}
+
+console.log('fin sincrono')
+
+-----------------------------
+Operaciones Asíncronas: En las operaciones asíncronas, el código no espera a que una 				operación se complete antes de pasar a la siguiente. En su lugar, 			se utilizan callbacks, promesas o async/await para manejar la 				respuesta de la operación cuando esté lista, permitiendo que el 			programa continúe ejecutándose mientras espera la respuesta.
+	ejemplo:
+console.log('inicio asincrono');
+
+setTimeout(function(){
+    for(let i = 0; i<= 10; i++){	setTimeour => es una funcion asincrona
+	console.log(i)
+    }
+}, 0)
+
+console.log('fin asincrono')
+
+----------------------------------------------------------
+----------------------------------------------------------
+C A L L B A C K S ( )
+
+Un callback en JavaScript es una función que se pasa como argumento a otra función y que se ejecuta después de que la función original haya terminado su tarea. Los callbacks son comunes en situaciones asíncronas, donde una función no puede esperar a que se complete una tarea y necesita ejecutar código una vez que la tarea se haya completado.
+
+ejemplo:	Imagina que estás en una tienda y la cajera te dice que tienes que esperar 		unos minutos mientras se procesa tu pago. En lugar de quedarte parado 			esperando, decides ir a comprar un café. Le pides a la señora que está 			adelante tuyo en la fila que te avise cuando sea tu turno, para que puedas 		regresar a tiempo y completar tu compra. En este caso, la señora actúa como 		el callback: ella te avisa cuando es tu turno, permitiéndote continuar con 		tu compra.
+
+function avanzaFila(callback) {
+    setTimeout(function(){
+        console.log('Tu turno ha llegado');
+        callback()
+    }, 5000);
+}
+
+function llamada(){
+    console.log('Te presentas a tu turno');
+}
+
+console.log('Llegas a la fila');
+
+avanzaFila(llamada);
+console.log('Te vas a comprar cafe');
+
+RESULT:
+	Llegas a la fila
+	Te vas a comprar cafe
+	Tu turno ha llegado
+	Te presentas a tu turno
+
+----------------------------------------------------------
+----------------------------------------------------------
+P R O M E S A S
+
+EJEMPLO REAL
+		Cuando compras tu almuerza en un tienda de comida rapida y te prometen que 		te van a entregar y te entregan un ticket que funciona como un comprobante
+		ese ticket es una demostracion que pagaste por tu comida y que te 			corresponde recibirla en un futuro cercano
+		las promesa al igual que el ticket son objetos que representan un valor
+		que aun no estan disponible y es por eso que no permite manejar de una
+		manera muy efectiva las operaciones asyncronas en js
+		
+ESTADOS DE PROMESA
+	~ pendiente	aun no se a resuelto ni se a rechazado
+
+	~ cumplida	se completa con exito el estado de la promesa cambia a cumplida y 			se pasa un valor como resultado
+
+	~ fallida	cambia a fallida y recibes informacion la razon del error
+

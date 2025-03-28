@@ -1,0 +1,78 @@
+███╗   ██╗███████╗███████╗████████╗
+████╗  ██║██╔════╝██╔════╝╚══██╔══╝
+██╔██╗ ██║█████╗  ███████╗   ██║   
+██║╚██╗██║██╔══╝  ╚════██║   ██║   
+██║ ╚████║███████╗███████║   ██║   
+╚═╝  ╚═══╝╚══════╝╚══════╝   ╚═╝   
+			     ██╗███████╗
+			     ██║██╔════╝
+			     ██║███████╗
+			██   ██║╚════██║
+			╚█████╔╝███████║
+			 ╚════╝ ╚══════╝
+                
+
+$ npm i -g @nestjs/cli
+
+nest new tasksapi
+
+paraverHTTP
+_____________________________________
+_____________________________________
+comandos
+
+nest generate module tasks
+
+nest g controller tasks --no-spec
+
+nest g service tasks --no-spec
+
+npm run start:dev
+
+_____________________________________
+_____________________________________
+como funciona (para mi)
+
+al crear nuestro archivo y instalamos nestjs nos dara todo unas
+carpeta pero en la carpeta SRC tenemos archivos de ejemplos
+app.controller.spec.ts
+app.controller.ts
+app.service.ts
+
+Estos 3 cosas quitaremos nosotros mismo lo instalaremos por comando y en 
+app.module.ts -> necesitamos quitar lo importador y que solo quede
+
+________________________________________
+import { Module } from '@nestjs/common';
+
+@Module({
+  imports: [],
+})
+export class AppModule {}
+
+ahora necesitamos instalar nuestro module, controlador y servicio con
+nest g module tasks
+
+nest g controller tasks --no-spec
+
+nest g service tasks --no-spec
+
+el "--no-spec" es para no tener los archivos de prueba ya que pordefecto te instala con todo prueba
+
+
+y luego pordefecto se importa en nuestro archivo "tasks.module.ts"
+despues de esto necesitamos crear la carpeta "schemas" que tendra los esquemas
+de nuesta base de datos
+tambie la carpeta "dto"  (Data Transfer Object) se utiliza para almacenar las clases que representan la estructura de los datos que se transfieren entre diferentes partes de la aplicación, como por ejemplo entre el cliente y el servidor. Los DTOs se utilizan para definir la forma de los datos que se envían y reciben en las solicitudes HTTP, lo que ayuda a mantener una estructura de datos consistente y facilita la validación de los datos recibidos.
+
+Despues de saber esto ahora conectaremos con nuesta base de datos que es MongoDB
+primero instalamos
+npm i @nestjs/mongoose mongoose
+luego hacemo lo que esta en la pagina para conectar a la bd
+
+una ves terminado eso nos vamos a la carpeta "schemas" y creamos un archivo llamado
+task.schema.ts
+
+
+
+

@@ -1,0 +1,64 @@
+
+███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
+██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
+█████╗░░░╚███╔╝░██████╔╝██████╔╝█████╗░░╚█████╗░╚█████╗░
+██╔══╝░░░██╔██╗░██╔═══╝░██╔══██╗██╔══╝░░░╚═══██╗░╚═══██╗
+███████╗██╔╝╚██╗██║░░░░░██║░░██║███████╗██████╔╝██████╔╝
+╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░
+
+_____________________________________
+_____________________________________
+carpeta ECOMMERCE
+
+npm init -y
+
+npm i express mysql2 morgan
+
+npm i nodemon -D
+
+npm i cors
+
+npm i dotenv
+
+npm i bcryptjs
+
+npm i jsonwebtoken
+
+npm i cookie-parser
+
+npm i zod
+
+F R O N T E N D  PACKAGES
+v i t e
+_____________________________________
+_____________________________________
+carpeta ECOMMERCE
+
+npm create vite
+
+cd client
+
+npm install
+
+//Tailwind
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+npm i react-router-dom
+
+npm install react-hook-form
+
+npm i axios
+
+npm i js-cookie
+_____________________________________
+_____________________________________
+web socketio  C H A T
+
+nppm i cors express socket.io morgan
+
+npm i nodemon -D
+
+F R O T E N D
+
+npm i socket.io-client
