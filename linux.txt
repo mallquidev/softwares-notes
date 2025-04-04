@@ -10,7 +10,30 @@
 ██║░░██║██╔══╝░░██╔══██╗
 ██████╔╝███████╗██████╦╝
 ╚═════╝░╚══════╝╚═════╝░
+________________________________
 
+--PONER MI USUARIO DEV COMO SUDO
+________________________________
+entrar en modo root con su
+
+sudo visudo		//Esto abrirá el archivo /etc/sudoers
+-agregar en 
+Defaults	env_reset,'pwfeedback'	//pone asterisco al input
+-y abajo de roor
+dev	ALL=(ALL:ALL) ALL
+
+--En tal caso no tengo contra para root lo agrego
+sudo passwd root
+
+_____________________________
+
+--CONFIG GRUB
+____________________________
+
+sudo nano /etc/default/grub
+
+GRUB_TIMEOUT=5		//muestra menu grub 5s antes de arrancar automatic
+sudo update-grub	//para generar los cambios
 ______________________________________
 
 --AGREGAR MI USUARIO A USUARIO SUDO
@@ -38,7 +61,6 @@ sudo locale-gen
 sudo dpkg-reconfigure locales
 
 nano /etc/locale.gen
-
                                 
 ____________________
                  

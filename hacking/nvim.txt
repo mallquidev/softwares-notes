@@ -8,43 +8,8 @@
 
 ____________________     _____________________
 
-----------------   PRIMERO ESTO      OMITIR ESTO AL SIGUIENTE PASO SI YA TIENES oh-my-zsh Y KITTY
+----------------   INSTALLATION
 ____________________     _____________________    
-
----
--OH-MY-ZSH //elije cualquiera de esos dos para la instalacion de OH-MY-ZSH
----
-~		//corremos ~
-via curl
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-via wget
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-
-
----
--KITTY
----
-sudo apt install kitty
-[iniciamos kitty]
-
-nvim.zshrc       //vermo las configuracions basicas plugis, scripts, alias, etc
-
----
--PLUGINS
----
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-//esto es para que en la termina te sugiera lo que ya escribiste antes y te autocomplete
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-//
-
-nvim.zshrc
-
-plugins=(
-	zsh-autosuggestions		//es el plugin que clonamos
-	zsh-syntax-highlighting	
-)
-
-//LO DEMAS COMO FONTS O PLUGIN AGREGAS TU LUEGO LO PONDRE AQUI XD
 
 _______________________
 

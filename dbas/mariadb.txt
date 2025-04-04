@@ -1,0 +1,13 @@
+______________________________
+
+INSTALAR MARIADB 
+______________________________
+
+sudo apt update
+sudo apt install mariadb-server mariadb-client -y
+
+sudo mariadb
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'codersql';
+FLUSH PRIVILEGES;
+EXIT;
