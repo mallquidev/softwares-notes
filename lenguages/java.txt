@@ -10,7 +10,7 @@ ___________________________________
 --IMPRIMIR TEXTO EN CONSOLA
 ___________________________________
 
-System.out.println("Hola mundo");      // Imprime el texto con salto de línea al final
+System.out.println("gitInitCV.");      // Imprime el texto con salto de línea al final
 System.out.print("Hola mundo");        // Imprime el texto sin salto de línea
 System.out.printf("Hola %s", nombre);  // Imprime texto con formato
 
