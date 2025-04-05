@@ -159,23 +159,30 @@ ___________________________________
 
 String texto = "Hola Mundo";
 
-texto.length();               // Longitud de la cadena
-texto.toLowerCase();          // Convierte a minúsculas
-texto.toUpperCase();          // Convierte a mayúsculas
-texto.charAt(0);              // Devuelve el carácter en la posición 0
-texto.substring(0, 4);        // Devuelve "Hola"
-texto.contains("Mundo");      // true
-texto.startsWith("Hola");     // true
-texto.endsWith("do");         // true
-texto.replace("Hola", "Hey"); // Cambia texto
-texto.trim();                 // Elimina espacios al inicio y final
+texto.length();               // Longitud de la cadena (cuenta la cantidad de caracteres)
+texto.toLowerCase();          // Convierte a minúsculas, "hola mundo"
+texto.toUpperCase();          // Convierte a mayúsculas, "HOLA MUNDO"
+texto.charAt(0);              // Devuelve el carácter en la posición 0, 'H'
+texto.substring(0, 4);        // Devuelve "Hola", extrae los caracteres desde la posición 0 hasta la 4 (sin incluir la posición 4)
+texto.contains("Mundo");      // true, verifica si la cadena contiene la palabra "Mundo"
+texto.startsWith("Hola");     // true, verifica si la cadena comienza con "Hola"
+texto.endsWith("do");         // true, verifica si la cadena termina con "do"
+texto.replace("Hola", "Hey"); // Cambia "Hola" por "Hey", resultado: "Hey Mundo"
+texto.trim();                 // Elimina los espacios en blanco al inicio y al final de la cadena, por ejemplo, "   Hola Mundo  " -> "Hola Mundo"
 
 // Comparación de strings
 String a = "hola";
 String b = "Hola";
 
-a.equals(b);                  // false (distingue mayúsculas)
-a.equalsIgnoreCase(b);        // true (sin distinguir mayúsculas)
+a.equals(b);                  // false, compara las cadenas y distingue entre mayúsculas y minúsculas (la 'h' no es igual a la 'H')
+a.equalsIgnoreCase(b);        // true, compara las cadenas sin distinguir entre mayúsculas y minúsculas
+
+// Eliminar todos los espacios de una cadena
+String sinEspacios = texto.replaceAll("\\s", "");  // Reemplaza todos los espacios (\\s) por una cadena vacía, "HolaMundo"
+
+// Invertir una cadena
+StringBuilder sb = new StringBuilder(texto);
+String textoInvertido = sb.reverse().toString();   // Invierte la cadena "Hola Mundo" -> "odnuM aloH"
 
 ___________________________________
 
