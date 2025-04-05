@@ -180,3 +180,22 @@ sudo dpkg -i archivo-descargar.deb	//instalar el archivo
 
 sudo apt-get install -f		//resolver dependencias faltantes
 
+---------------------------
+--INSTALAR PROGRAMA .tar.gz
+
+cd Downloads
+sudo tar -xzf postman-linux-x64.tar.gz		//Creara una carpeta postman
+mv Postman postman		//poner nombre corto y en minuscula
+sudo mv postman /opt/	//mover a opt (como aplicacion del sistema)
+
+sudo nano /usr/share/applications/postman.desktop		//crear acceso directo .desktop
+---------------------------------------------------------------------------------------
+[Desktop Entry]
+Name=Postman
+Exec=/opt/postman/Postman
+Icon=/opt/postman/app/resources/app/assets/icon.png
+Type=Application
+Categories=Development;
+Terminal=false
+---------------------------------------------------------------------------------------
+
