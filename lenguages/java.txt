@@ -1,0 +1,405 @@
+
+░░░░░██╗░█████╗░██╗░░░██╗░█████╗░
+░░░░░██║██╔══██╗██║░░░██║██╔══██╗
+░░░░░██║███████║╚██╗░██╔╝███████║
+██╗░░██║██╔══██║░╚████╔╝░██╔══██║
+╚█████╔╝██║░░██║░░╚██╔╝░░██║░░██║
+░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝
+___________________________________
+
+--IMPRIMIR TEXTO EN CONSOLA
+___________________________________
+
+System.out.println("Hola mundo");      // Imprime el texto con salto de línea al final
+System.out.print("Hola mundo");        // Imprime el texto sin salto de línea
+System.out.printf("Hola %s", nombre);  // Imprime texto con formato
+
+___________________________________
+
+--DECLARAR VARIABLES
+___________________________________
+
+// Primitivos
+int edad = 25;               // Números enteros
+double precio = 19.99;       // Números con decimales
+char letra = 'A';            // Un solo carácter
+boolean activo = true;       // Valor verdadero o falso
+
+// Objetos wrapper (clases)
+Integer edadObj = 25;
+Double precioObj = 19.99;
+Boolean activoObj = true;
+Character letraObj = 'A';
+
+// Diferencia: los tipos primitivos son más rápidos y ocupan menos memoria.
+// Los wrappers permiten trabajar con colecciones (ArrayList, etc.) y usar métodos útiles.
+
+String nombre = "Carlos";    // Cadena de texto (objeto)
+
+___________________________________
+
+--CONDICIONALES
+___________________________________
+
+if (edad >= 18) {
+    System.out.println("Mayor de edad");
+} else if (edad >= 13) {
+    System.out.println("Adolescente");
+} else {
+    System.out.println("Menor de edad");
+}
+
+// SWITCH
+int dia = 3;
+switch (dia) {
+    case 1:
+        System.out.println("Lunes");
+        break;
+    case 2:
+        System.out.println("Martes");
+        break;
+    default:
+        System.out.println("Otro día");
+}
+
+___________________________________
+
+--BUCLES (CICLOS)
+___________________________________
+
+// FOR
+for (int i = 0; i < 5; i++) {
+    System.out.println("i = " + i);
+}
+
+// WHILE
+int j = 0;
+while (j < 5) {
+    System.out.println("j = " + j);
+    j++;
+}
+
+// DO-WHILE
+int k = 0;
+do {
+    System.out.println("k = " + k);
+    k++;
+} while (k < 5);
+
+___________________________________
+
+--FUNCIONES / MÉTODOS
+___________________________________
+
+// Método público que retorna entero
+public static int sumar(int a, int b) {
+    return a + b;
+}
+
+// Método público sin retorno
+public static void saludar(String nombre) {
+    System.out.println("Hola " + nombre);
+}
+
+// Método privado
+private static void metodoPrivado() {
+    System.out.println("Privado");
+}
+
+// Método protegido (visible en subclases)
+protected void metodoProtegido() {
+    System.out.println("Protegido");
+}
+
+___________________________________
+
+--ARREGLOS
+___________________________________
+
+int[] numeros = {1, 2, 3, 4};
+System.out.println(numeros[0]);  // Acceder al primer valor
+
+for (int n : numeros) {
+    System.out.println(n);       // Recorre todo el arreglo
+}
+
+___________________________________
+
+--ENTRADA POR TECLADO
+___________________________________
+
+import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+System.out.print("Ingrese su nombre: ");
+String nombre = sc.nextLine();
+System.out.println("Hola " + nombre);
+
+___________________________________
+
+--COMENTARIOS
+___________________________________
+
+// Comentario de una línea
+
+/*
+Comentario
+de múltiples líneas
+*/
+
+/**
+ * Comentario tipo documentación JavaDoc
+ */
+
+
+___________________________________
+
+--MÉTODOS DE STRINGS
+___________________________________
+
+String texto = "Hola Mundo";
+
+texto.length();               // Longitud de la cadena
+texto.toLowerCase();          // Convierte a minúsculas
+texto.toUpperCase();          // Convierte a mayúsculas
+texto.charAt(0);              // Devuelve el carácter en la posición 0
+texto.substring(0, 4);        // Devuelve "Hola"
+texto.contains("Mundo");      // true
+texto.startsWith("Hola");     // true
+texto.endsWith("do");         // true
+texto.replace("Hola", "Hey"); // Cambia texto
+texto.trim();                 // Elimina espacios al inicio y final
+
+// Comparación de strings
+String a = "hola";
+String b = "Hola";
+
+a.equals(b);                  // false (distingue mayúsculas)
+a.equalsIgnoreCase(b);        // true (sin distinguir mayúsculas)
+
+___________________________________
+
+--STRINGBUILDER
+___________________________________
+
+StringBuilder sb = new StringBuilder();
+
+sb.append("Hola ");
+sb.append("Mundo");
+System.out.println(sb.toString());   // "Hola Mundo"
+
+sb.insert(5, "Java ");               // Inserta en una posición
+sb.delete(5, 10);                    // Elimina caracteres del 5 al 9
+
+// StringBuilder es más eficiente que usar + con String en bucles
+
+___________________________________
+
+--CLASES Y OBJETOS
+___________________________________
+
+public class Persona {
+    String nombre;
+    int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void saludar() {
+        System.out.println("Hola, soy " + nombre);
+    }
+}
+
+// Crear objeto
+Persona p = new Persona("Carlos", 30);
+p.saludar();
+
+___________________________________
+
+--HERENCIA
+___________________________________
+
+public class Animal {
+    public void sonido() {
+        System.out.println("Hace un sonido");
+    }
+}
+
+public class Perro extends Animal {
+    @Override
+    public void sonido() {
+        System.out.println("Ladra");
+    }
+}
+
+Perro miPerro = new Perro();
+miPerro.sonido();   // "Ladra"
+
+___________________________________
+
+--INTERFACES
+___________________________________
+
+public interface Vehiculo {
+    void arrancar();
+}
+
+public class Auto implements Vehiculo {
+    public void arrancar() {
+        System.out.println("Auto arrancando");
+    }
+}
+
+Vehiculo v = new Auto();
+v.arrancar();
+
+___________________________________
+
+--MANEJO DE EXCEPCIONES
+___________________________________
+
+try {
+    int resultado = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage());
+} finally {
+    System.out.println("Esto siempre se ejecuta");
+}
+
+___________________________________
+
+--ARRAYLIST (COLECCIONES)
+___________________________________
+
+import java.util.ArrayList;
+import java.util.List;
+
+List<String> nombres = new ArrayList<>();
+nombres.add("Ana");
+nombres.add("Luis");
+nombres.add("Carlos");
+
+System.out.println(nombres.get(0));   // "Ana"
+System.out.println(nombres.size());   // 3
+
+for (String nombre : nombres) {
+    System.out.println(nombre);
+}
+
+nombres.remove("Luis");               // Elimina por valor
+nombres.clear();                      // Vacía la lista
+
+___________________________________
+
+--ENUMS
+___________________________________
+
+public enum Dia {
+    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
+}
+
+// Usar un enum
+Dia dia = Dia.LUNES;
+System.out.println(dia);   // LUNES
+
+// Métodos en enum
+public enum Mes {
+    ENERO(31), FEBRERO(28), MARZO(31);
+    
+    private int dias;
+    
+    Mes(int dias) {
+        this.dias = dias;
+    }
+    
+    public int getDias() {
+        return dias;
+    }
+}
+
+// Acceder a un valor enum
+Mes enero = Mes.ENERO;
+System.out.println(enero.getDias());  // 31
+
+___________________________________
+
+--MANEJO DE ARCHIVOS
+___________________________________
+
+import java.io.*;
+
+public class Archivo {
+    public static void main(String[] args) {
+        try {
+            // Escribir en archivo
+            FileWriter fw = new FileWriter("miArchivo.txt");
+            fw.write("Hola, este es un archivo de texto.");
+            fw.close();
+            
+            // Leer de archivo
+            FileReader fr = new FileReader("miArchivo.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Error al manejar el archivo: " + e.getMessage());
+        }
+    }
+}
+
+___________________________________
+
+--FECHAS Y HORAS
+___________________________________
+
+import java.time.*;
+
+LocalDate fecha = LocalDate.now();    // Fecha actual (yyyy-mm-dd)
+System.out.println(fecha);            // Ejemplo: 2025-04-05
+
+LocalDate fechaFutura = fecha.plusDays(5);  // Sumar días
+System.out.println(fechaFutura);           // Ejemplo: 2025-04-10
+
+LocalDate fechaPasada = fecha.minusMonths(1);  // Restar meses
+System.out.println(fechaPasada);              // Ejemplo: 2025-03-05
+
+LocalTime hora = LocalTime.now();     // Hora actual
+System.out.println(hora);             // Ejemplo: 14:30:15
+
+LocalDateTime fechaYHora = LocalDateTime.now();  // Fecha y hora
+System.out.println(fechaYHora);              // Ejemplo: 2025-04-05T14:30:15
+
+___________________________________
+
+--EXPRESIONES LAMBDA
+___________________________________
+
+import java.util.*;
+import java.util.function.*;
+
+List<String> nombres = Arrays.asList("Ana", "Luis", "Carlos", "Maria");
+
+nombres.forEach(nombre -> System.out.println(nombre));  // Imprimir todos
+
+// Usar lambda en una interfaz funcional (Runnable)
+Runnable tarea = () -> System.out.println("Ejecutando tarea");
+new Thread(tarea).start();  // Inicia un hilo con la tarea
+
+// Ordenar usando lambdas
+Collections.sort(nombres, (a, b) -> a.compareTo(b));  // Ordena en orden alfabético
+System.out.println(nombres);  // [Ana, Carlos, Luis, Maria]
+
+// Uso de Predicate, Function, y Consumer
+Predicate<String> esMayorDeEdad = s -> s.length() > 5;
+System.out.println(esMayorDeEdad.test("Carlos"));  // true
+
+Function<String, Integer> longitud = s -> s.length();
+System.out.println(longitud.apply("Carlos"));  // 6
+
+Consumer<String> imprimir = s -> System.out.println(s);
+nombres.forEach(imprimir);  // Imprime cada nombre de la lista
