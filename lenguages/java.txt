@@ -110,6 +110,58 @@ private static void metodoPrivado() {
 protected void metodoProtegido() {
     System.out.println("Protegido");
 }
+___________________________________
+
+--STREAMS Y MÉTODOS FUNCIONALES
+___________________________________
+
+import java.util.*;
+import java.util.stream.*;
+
+List<String> nombres = Arrays.asList("Ana", "Luis", "Carlos", "Maria");
+
+// .stream(): convierte una colección a un flujo para operaciones funcionales
+nombres.stream()
+    .filter(n -> n.startsWith("C"))         // Filtra los nombres que empiezan con "C"
+    .forEach(System.out::println);          // Imprime cada uno (Carlos)
+
+// .map(): transforma los elementos del stream
+List<Integer> longitudes = nombres.stream()
+    .map(String::length)                    // Aplica .length() a cada nombre
+    .collect(Collectors.toList());          // Recolecta los resultados en una lista
+
+System.out.println(longitudes);             // [3, 4, 6, 5]
+
+// .sorted(): ordena los elementos
+nombres.stream()
+    .sorted()                               // Orden alfabético
+    .forEach(System.out::println);          // Ana, Carlos, Luis, Maria
+
+// .collect(): recolecta los datos en una colección (List, Set, etc.)
+List<String> filtrados = nombres.stream()
+    .filter(n -> n.length() > 4)
+    .collect(Collectors.toList());          // [Carlos, Maria]
+
+// .reduce(): reduce el stream a un solo resultado (por ejemplo, sumar)
+int suma = Arrays.asList(1, 2, 3, 4, 5).stream()
+    .reduce(0, (a, b) -> a + b);            // Suma todos los elementos
+
+System.out.println(suma);                   // 15
+
+// Referencias a métodos (::)
+nombres.forEach(System.out::println);       // Imprime cada nombre usando referencia directa
+
+// También se puede usar con métodos personalizados
+public class Util {
+    public static boolean empiezaConM(String nombre) {
+        return nombre.startsWith("M");
+    }
+}
+
+List<String> conM = nombres.stream()
+    .filter(Util::empiezaConM)
+    .collect(Collectors.toList());          // [Maria]
+
 
 ___________________________________
 
@@ -122,6 +174,81 @@ System.out.println(numeros[0]);  // Acceder al primer valor
 for (int n : numeros) {
     System.out.println(n);       // Recorre todo el arreglo
 }
+
+int[] numeros = {1, 2, 3, 4};
+
+// Acceso a elementos
+System.out.println(numeros[0]);              // Primer elemento (1)
+System.out.println(numeros[numeros.length-1]); // Último elemento (4)
+
+// Recorrer arreglo
+for (int n : numeros) {
+    System.out.println(n);                  // Recorre todo el arreglo
+}
+
+// Modificar elemento
+numeros[2] = 10;                            // Cambia el 3er valor a 10 (posición 2)
+
+// "Eliminar" primer elemento (copiando a nuevo arreglo)
+int[] sinPrimero = new int[numeros.length-1];
+System.arraycopy(numeros, 1, sinPrimero, 0, numeros.length-1);
+
+// "Eliminar" último elemento (copiando a nuevo arreglo)
+int[] sinUltimo = new int[numeros.length-1];
+System.arraycopy(numeros, 0, sinUltimo, 0, numeros.length-1);
+
+// "Agregar" elemento (copiando a nuevo arreglo más grande)
+int[] masElementos = new int[numeros.length+1];
+System.arraycopy(numeros, 0, masElementos, 0, numeros.length);
+masElementos[masElementos.length-1] = 5;    // Agrega 5 al final
+
+// Buscar elemento por valor
+int buscar = 3;
+for(int i = 0; i < numeros.length; i++) {
+    if(numeros[i] == buscar) {
+        System.out.println("Encontrado en posición: " + i);
+        break;
+    }
+}
+
+// Convertir a String (representación)
+System.out.println(Arrays.toString(numeros)); // [1, 2, 3, 4]
+
+___________________________________
+
+--LISTAS (ArrayList)
+___________________________________
+
+import java.util.ArrayList;
+import java.util.List;
+
+List<String> frutas = new ArrayList<>();
+frutas.add("Manzana");
+frutas.add("Banana");
+frutas.add("Naranja");
+
+// Operaciones básicas
+frutas.add("Uva");                // Agrega al final
+frutas.add(0, "Fresa");           // Agrega al inicio
+frutas.remove(0);                 // Elimina el primero
+frutas.remove("Banana");          // Elimina por valor
+frutas.remove(frutas.size()-1);   // Elimina el último
+
+// Acceso
+String primera = frutas.get(0);   // Primer elemento
+String ultima = frutas.get(frutas.size()-1); // Último elemento
+
+// Búsqueda
+int pos = frutas.indexOf("Naranja"); // Retorna posición
+boolean existe = frutas.contains("Manzana"); // true/false
+
+// Recorrido
+for(String fruta : frutas) {
+    System.out.println(fruta);
+}
+
+// Conversión a arreglo
+String[] arrFrutas = frutas.toArray(new String[0]);
 
 ___________________________________
 
