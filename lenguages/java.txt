@@ -537,3 +537,75 @@ System.out.println(longitud.apply("Carlos"));  // 6
 
 Consumer<String> imprimir = s -> System.out.println(s);
 nombres.forEach(imprimir);  // Imprime cada nombre de la lista
+
+--------------------------------------------
+--POO JAVA
+--------------------------------------------
+//Es un paradigma
+Un paradignma es una manera de pensar o actuar, todo aquel modelo, patron o ejmplo que debe seguirse
+en determinada situacion
+
+En un sentido amplio, se refiere a una teoria o conjunto de terorias que sirve de modelo a seguir
+para resolver problemas o situacion de determinadas que se planteen
+
+//Paradigma Orientado a Objetos
+El paradigma de progrmacion orientada a objetos es la implementacion de un paradigma de programacion
+
+La POO se basa en la idea de un mundo lleno de objetos y que la resolucion de problemas se realiza mediante
+el modelado/abstraccion de objetos de la vida real.
+
+Los objetos pueden comuncarse entre si mediante mensajes.
+
+//Caracteristcas 4 pilares
+Se basa en el concepto de agrupar codigo y datos juntos dentro de una misma unidad llamada clase
+
+1.Herencia
+>Hay clases que comparten gran parte de sus caracteristicas
+>Son conocidos como subclases
+
+2.Polimorfismo
+>POLI(muchas)MORFISMO(formas)
+
+3.Encapsulamiento
+>Encapsulamiento es el proceso de envolver los datos (atributos) y los métodos (funciones) en una 
+única unidad (una clase) y restringir el acceso directo a algunos de los objetos de la clase.
+Public, Private, Protected
+
+4.Abstraccion
+>Una clase abstracta es un tipo especial de clase que sirve como base para otras clases, 
+permitiendo definir comportamientos comunes
+
+5.UML
+
+
+//CLASES
+>Es una plantilla, o molde que permite construir objetos
+>Representa "entidades" del mundo real
+>Poseen atributos y metodos
+>NO PUEDEN ser utilizadas directamente(sino mediante instancias a objetos)
+
+//OBJETOS
+>Un objeto es una instancia de una clase
+>es la representacion de un objeto que generalmente existe en la vida real
+
+//constructores
+>Son funciones especiales que contienen las clases para permitir la creacion de objetos
+>Pueden recibir datos/para'metros como no (construir vacio)
+>Se llaman SIEMPRE igual que la clase
+>NO RETORNA NINGU'N VALOR (ni siquiera VOID)
+>GENERALMENTE SE UTILIZAN DOS TIPOS DE CONSTRUCTORES >Constructor vacio >constructor con todos los parametros
+
+//Getter Y Setter
+Get=Traer
+Set=Colocar
+
+//SOBRECARGA Y SOBRESCRITURA
+>Sobre carga establece que dentro de una clase podemos tener 2 metodos que tengan exactamente el mismo nombre
+pero diferente cantida o tipo de parametros que pueda recibir
+CADA UNO DE ESTOS METODOS QUE TIENEN EL MISMO NOMBRE PERO DISTINTOS PARAMETROS SE CONCIDERAN SOBRECARGA DE METODOS ANTERIOR
+
+>Sobreescritura permite que una subclase modifique o reemplaze el comportamiento de un método
+heredado de la superclase
+Es decir, aunque la subclase hereda el método de la superclase, puede ofrecer su propia versión del método 
+con un comportamiento distinto.
+
