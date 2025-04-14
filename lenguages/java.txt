@@ -609,3 +609,9 @@ heredado de la superclase
 Es decir, aunque la subclase hereda el método de la superclase, puede ofrecer su propia versión del método 
 con un comportamiento distinto.
 
+//INTERFACES
+>Son una oleccion de metodos abstractos con propiedades (atributos) CONSTANTES
+>Una interfaz solamente puede extender o implementar otras interfaces (la cantidad que quiera)
+
+>CUANDO HAY UNA ESPECIALIZACION Y VA MAS "AL QUE HACE ALGO" SE UTILIZA INTERFAZES
+MIENTRAS QUE CUANDO ME INTERESA MAS "EL QUE ES" que "EL QUE HACE" UTILIZO CLASES ABSTRACTAS
