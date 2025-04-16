@@ -545,16 +545,34 @@ nombres.forEach(imprimir);  // Imprime cada nombre de la lista
 Un paradignma es una manera de pensar o actuar, todo aquel modelo, patron o ejmplo que debe seguirse
 en determinada situacion
 
+>Paradigma Imperativa
+es aquella que se dice que se debe hacer detallando lo que se va hacer paso por paso
+POO es imperativa porque le decimos como debe hacer las cosas a trave's de objetos, clases, metodos etc.
+
+>Paradigma Declarativa
+En la programación declarativa (como SQL, HTML, o ciertos estilos de programación funcional), 
+describes qué quieres que pase, no cómo.
+
 En un sentido amplio, se refiere a una teoria o conjunto de terorias que sirve de modelo a seguir
 para resolver problemas o situacion de determinadas que se planteen
 
-//Paradigma Orientado a Objetos
-El paradigma de progrmacion orientada a objetos es la implementacion de un paradigma de programacion
+//Paradigma Estructurado
+codigo de arriba hacia abajo
+
+//Paradigma Funcional
+El paradigma funcional se basa en el uso de funciones puras, evita estado mutable y efectos secundarios
+
+//Paradigma Reactiva
+El paradigma reactivo se usa para observar y reaccionar a los cambios en flujos de datos continuos. 
+Ejemplos incluyen chats en tiempo real, donde los mensajes se envían y reciben constantemente
+
+//POO (Paradigma Orientado a Objetos)
+El paradigma de programacion orientada a objetos es la implementacion de un paradigma de programacion
 
 La POO se basa en la idea de un mundo lleno de objetos y que la resolucion de problemas se realiza mediante
 el modelado/abstraccion de objetos de la vida real.
 
-Los objetos pueden comuncarse entre si mediante mensajes.
+Los objetos pueden comunicarse entre si mediante mensajes.
 
 //Caracteristcas 4 pilares
 Se basa en el concepto de agrupar codigo y datos juntos dentro de una misma unidad llamada clase
@@ -610,8 +628,12 @@ Es decir, aunque la subclase hereda el método de la superclase, puede ofrecer s
 con un comportamiento distinto.
 
 //INTERFACES
->Son una oleccion de metodos abstractos con propiedades (atributos) CONSTANTES
+>Son una coleccion de metodos abstractos con propiedades (atributos) CONSTANTES
 >Una interfaz solamente puede extender o implementar otras interfaces (la cantidad que quiera)
 
->CUANDO HAY UNA ESPECIALIZACION Y VA MAS "AL QUE HACE ALGO" SE UTILIZA INTERFAZES
+>CUANDO HAY UNA ESPECIALIZACION Y VA MAS AL "QUE HACE" ALGO SE UTILIZA INTERFAZES
 MIENTRAS QUE CUANDO ME INTERESA MAS "EL QUE ES" que "EL QUE HACE" UTILIZO CLASES ABSTRACTAS
+
+
+//FIFO (El primer elemento en entrar es el primer elemento en salir.)
+//LIFO (El último elemento en entrar es el primero en salir.)
