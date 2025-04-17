@@ -712,3 +712,32 @@ Para poder construir excepciones propieas, hay que tener en cuenta los siguiente
 >finally: Bloque de c'odigo que se ejecuta siempre (sin importar si hubieron errores o no)
 >throw: Lanzar una excepcion cualquiera				//en spanish arrojar
 >throws: Determinar qu'e excepciones puede lanzar un me'todo	//arroja
+
+----------------------------------
+--ENUMS
+----------------------------------
+Es una palabra clave utilizada para definir un tipo de dato especial que representa'
+un conjunto fijo de constantes.
+estas constantes con valores predefinidos que representan elementos distintos de un conjunto
+Metodos:
+>name(): Devuelve un String con el nombre de la constante
+>ordinal(): Devuelve un entero con la posicion del enum segu'n esta' declarada.
+>values(): Devuelve un array que contiene todos los elementos del enum
+>valuesOf(String name): Se utiliza para obtner la constante del enum cuyo nombre coincide con la cadena
+			proporcionada.
+
+----------------------------------
+--THREADS(HILOS)
+----------------------------------
+>Concurrencia
+Se refiere a las capacidad de un sistema o programa para realizar mu'ltiples tareas al mismo tiempo,
+de manera aprentemente simulta'nea.
+En programacion implica que m'ultiples hilos de ejecucion o procesos esta'n en funcionamiento
+al mismo tiempo y realizando sus tareas de manera independiente o concurrente
+
+>Hilos(Threads)
+Es una unidad ba'sica de ejecucion que permite que un programa realice' multiples tareas de manera concurrente.
+Los hilos Permiten la ejecucion de varias partes de un programa al mismo tiempo en forma de subprocesos sin que
+uno interfiera con otro.
+
+
