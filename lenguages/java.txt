@@ -637,3 +637,78 @@ MIENTRAS QUE CUANDO ME INTERESA MAS "EL QUE ES" que "EL QUE HACE" UTILIZO CLASES
 
 //FIFO (El primer elemento en entrar es el primer elemento en salir.)
 //LIFO (El último elemento en entrar es el primero en salir.)
+
+------------------------
+---COLLECTIONS
+------------------------
+>LISTS(LISTAS)
+>Las listas son un conjunto de elementos relacionados entre si que tiene un determinado orden.
+>Su tamanio es dina'mico (puede cambiar en el tiempo)
+>Existen diferentes tipos de Listas: ArrayLists, LinkedLists, Stack
+
+//ArrayLists	FIFO
+Es una clase que se representa como una matriz dinamica que permite almacenar elementos
+Hereda de la clase AbstractList, la cual implementa la interfaz List.
+Permite colecciones o elementos duplicados.
+El orden de los registros es el orden en el que fueron insertados.
+Permite acceso aleatorio(Tiene I'ndice) / Manipulacion lenta (recorrer toodo el arraylist para hacer un cambio)
+Ejemplo:
+List<Persona> lista = new ArrayList<Persona>();
+lista.add(new Persona(1,"Luicina",30))
+
+//LinkedLists	FIFO y LIFO
+Es una clase
+Representan a una lista doblemente enlazada(ida y vuelta)
+Permite duplicados
+Mantiene el orden de insercio'n
+Manipulacion m'as r'apida
+Puese ser usada no solo como lista, sino tambien como pila o como cola.
+Ejemplo:
+List<Persona> lista = new LinkedList<Persona>();
+lista.add(new Persona(1,"Lusina", 30));
+lista.add(0, new Persona(5, "alinicio", 90)) 	//se va al inicio
+
+//STACKS(Pilas) LIFO
+Representan a objetos arriba de otros
+Ejemplo:
+Stack<Integer> pila = new Stack<Integer>();
+System.out.println("Pila " + pila)			//muestra los elementos
+System.out.println("Esta vacia?" + pila.isEmpty())	//isEmpty() == true o false
+pila.push(1)						//agrega
+pila.pop()						//elimina el ultimo que entro
+pila.search(3)						//busca elemento 3
+pila.peek()						//saber cual fue el ultimo que se agrego
+
+//MAP
+>Un Map es una coleccion de pares clave-valor donde cada clave esta asociada a un unico valor.
+>Map en no puede contener claves duplicadas.
+>Java proporciona diferentes implementaciones de Map:
+HashMap, TreeMap, LinkedHashMap....
+
+*put(C clave, V valor): Agregar un par clave-valor a la collection Map.
+*get(Object clave): Devuelve el valor asociado a la clave brindanda o null si la clave no existe
+*containsKey(Object clave): Verifica si el Map contiene el valor especificado
+*remove(Object clave): Elimina el registro asociado a la clave brindada
+*keySet(): Devuelve un conjunto de todas las claves en el Map
+*values(): Devuelve una coleccion de todos los valores que contiene el Map
+EJEMPLO:
+Map<Integer, String> mapEmployee = new HashMap<>();
+mapEmployee.put(10, "pachorez")
+boolean mapEmployee.containsValue("OTRA COSA")		//false
+boolean mapEmployee.containsKey(10)			//true
+
+String name = mapEmployee.get(10,);
+System.out.println("El empleado buscado es: "+ name) 	//pachorez
+
+mapEmployee.remove(10)					//Elimina
+
+---------------------------------
+--Excepciones
+---------------------------------
+Excepciones Personalizadas
+Para poder construir excepciones propieas, hay que tener en cuenta los siguientes bloques:
+>try: Bloque donde puede ocurrir la excepcion
+>catch: Es como el "else" del try (se ejecuta al dispararse una excepcion en el bloque try)
+>finally: Bloque de c'odigo que se ejecuta siempre (sin importar si hubieron errores o no)
+>throw: Lanzar una excepcion cualquiera				//en spanish arrojar
+>throws: Determinar qu'e excepciones puede lanzar un me'todo	//arroja
