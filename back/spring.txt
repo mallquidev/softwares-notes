@@ -1,0 +1,68 @@
+
+░██████╗██████╗░██████╗░██╗███╗░░██╗░██████╗░
+██╔════╝██╔══██╗██╔══██╗██║████╗░██║██╔════╝░
+╚█████╗░██████╔╝██████╔╝██║██╔██╗██║██║░░██╗░
+░╚═══██╗██╔═══╝░██╔══██╗██║██║╚████║██║░░╚██╗
+██████╔╝██║░░░░░██║░░██║██║██║░╚███║╚██████╔╝
+╚═════╝░╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░
+
+----------------------
+--SecurityConfig
+----------------------
+//Anotaciones
+@Configuration: marca la clase como una clase de configuracion de Spring, lo que significa que contiene "beans" 
+		de configuracion que spring utilizar para crear los componentes necesarios.
+
+@EnableWebSecurity: habilita la configuracion web en la aplicacion, permitiendo que Spring Security contole el
+		    acceso a las rutas de la aplicacion
+
+//Metodo
+
+>filterChaing(HttpSecurity http): Define una cadena de filtros que se aplicara'n a las solicitudes HTTP entrantes
+				  para controlar la seguridad ejemplo: protegiendo rutas, habilitando CORS, etc.
+
+http.cors(Customizer.withDefaults())
+	Habilita el sporte para Cross-Origin-Resource-Sharing(CORS) con la configuracion predeterminada
+	CORS es un mecanismo que permite que las solicitudes de recursos como desde un navegador.
+
+.csrf(csrf -> csrf.disable())
+	Desactiva la protenccion CSRF(Cross-Site Request Forgery). CSRF es una vulnerabilidad de seguridad en appsweb
+	que permite que un atacante ejecute acciones no deseadas en nombre de un usuario autenticado. Al deshabilitar
+	CSRF en este co'digo, la aplicacion no sera' protegida contra este tipo de ataque, lo que a veces es necesario
+	en ciertos casos, especialmente si la API se va consumir desde clientes que no son navegadores web, como 
+	apps moviles o frontend desacoplados.
+
+.httpBasic(Customizar.withDefaults())
+	Habilita la autenticacion ba'sica HTTP, que permite enviar el nombre de usuario y la contrasena en cada
+	solicitud. se usa generalmente para pruebas simples(Autenticacion Simple: nombre de usuario y contrasena).
+
+.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+	SessionCreationPolicy.STATELESS: indica que la aplicacion no debe crear sessiones HTTP, es decir no mantiene
+	el estado de las sessiones entre las solicitudes. Cada Solicitud sera' independiente.
+	Configura la aplicacion para que "no mantenga session" en el servidor. En lugar de eso, cada solicitud debe
+	incluir un token(como JWT) para autenticacion.
+
+.authorizeHttpRequests(auth -> { ... })
+	Este bloque establece las reglas de autorizacion para las solicitudes HTTP.
+
+	.requestMatchers("/test/hello").permitAll(): permite acceso pu'blico (sin necesidad de autenticacion) a esa ruta
+
+	.auth.anyRequest().authenticated(): esto significa que todas las dema's solicitudes deben ser autenticadas.
+		es decir, cualquier ruta no especificada anteriormente en el bloque tendra' que estar asociada con un
+		usuario autenticado para poder acceder a ella.
+
+.exceptionHandling(exception -> exception.authenticationEntryPoint(jwtEntryPoint()));
+	Este bloque maneja las excepciones de autenticación. En este caso, se está configurando un punto de entrada de 
+	autenticación personalizado utilizando JWT (probablemente un token).
+
+	jwtEntryPoint() es un método que probablemente define cómo se manejarán los errores de autenticación 
+	(por ejemplo, cuando un usuario no está autenticado o el token JWT es inválido). Este método sería 
+	responsable de devolver una respuesta adecuada, como un error 401 (no autorizado) y posiblemente un 
+	mensaje indicando que el usuario no está autenticado correctamente.
+
+	Este es un enfoque común cuando se usa JWT para manejar la autenticación y se necesita una respuesta 
+	personalizada cuando un token es inválido o falta.
+
+return http.build()
+	inalmente, se construye y devuelve la configuración de seguridad que se definió a lo largo de este bloque. 
+	http.build() crea la configuración final que Spring Security usará para proteger las rutas de la aplicación.
