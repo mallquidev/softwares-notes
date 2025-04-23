@@ -66,3 +66,12 @@ http.cors(Customizer.withDefaults())
 return http.build()
 	inalmente, se construye y devuelve la configuración de seguridad que se definió a lo largo de este bloque. 
 	http.build() crea la configuración final que Spring Security usará para proteger las rutas de la aplicación.
+
+-----------------------------
+---JWT
+-----------------------------
+>JwtUtil	Esta clase es un "Utilitario" para trabajar con JWTs(JSON Web Tokens) es una aplicacion spring boot con
+		seguridad. JWT se usa para manejar la autenticacion y autorizacion de usuarios.
+		1. Genera un token JWT usando los datos del usuario autenticado.
+		2. Extrae la informacion(como el username o la fecha de expiracion) de un token JWT.
+		3. Valida si el token es va'lido, si coincide con el usuario y si no ha expirado.
