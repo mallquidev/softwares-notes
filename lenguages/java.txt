@@ -740,4 +740,17 @@ Es una unidad ba'sica de ejecucion que permite que un programa realice' multiple
 Los hilos Permiten la ejecucion de varias partes de un programa al mismo tiempo en forma de subprocesos sin que
 uno interfiera con otro.
 
+--------------------------------
+--Casting 
+--------------------------------
+Es un metodo que nos permite tratar a un valor como si fuera de otro tipo
+double porcAprobados;
+int total = 50;
+int aprobados = 25;
+
+porcAprobados = ((double) aprobados/total) * 100; // Usando casting
+
+------------------------------
+--Genericos
+------------------------------
 

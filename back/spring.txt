@@ -7,6 +7,13 @@
 ╚═════╝░╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░
 
 ----------------------
+---Anotaciones
+----------------------
+@Component	Spring va a detectar esta clase como un componente y podra' inyectarla donde la necesites.
+
+@Autowired	Es una anotacion de Spring que se usa para inyectar dependencias automaticamente
+
+----------------------
 --SecurityConfig
 ----------------------
 //Anotaciones
@@ -75,3 +82,17 @@ return http.build()
 		1. Genera un token JWT usando los datos del usuario autenticado.
 		2. Extrae la informacion(como el username o la fecha de expiracion) de un token JWT.
 		3. Valida si el token es va'lido, si coincide con el usuario y si no ha expirado.
+
+>JwtEntryPoint	Es una clase que jala(Implementa) de AuthenticationEntryPoint, que se encarga de:
+		Responder cuando alguien intenta acceder a una ruta protegida sin estar autenticado
+		Que' hace exactamente?: Cuando no mandas un token, o el token esta' mal, spring security
+					detecta que no esta's autenticado y ejecuta el codigo no autorizado
+		
+
+>JwtAuthenticationFilter
+		Su funcion es interceptar cada peticion y verificar si tiene un token valido.
+		Es un filtro personalizado que se ejecuta una sola vez por cada solicitud HTTP 
+		(por eso extiende de OncePerRequestFilter). Sirve para:
+		1. Leer el token JWT del encabezado de la solicitud
+		2. Validarlo
+		3. Autenticar al usuario si el token es va'lido

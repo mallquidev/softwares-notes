@@ -1,0 +1,47 @@
+
+██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░
+██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗
+██║░░██║██║░░██║██║░░╚═╝█████═╝░█████╗░░██████╔╝
+██║░░██║██║░░██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗
+██████╔╝╚█████╔╝╚█████╔╝██║░╚██╗███████╗██║░░██║
+╚═════╝░░╚════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝
+
+
+------------------------
+--DOCKER
+------------------------
+>Docker File		Es un archivo de texto donde defines instrucciones paso a paso para crear una imagen. 
+			Es como una receta de cocina.
+
+>Docker Image  		es el resultado de ejecutar el Dockerfile. Es una plantilla lista para crear contenedores. 
+			Contiene el sistema operativo, tus programas, configuraciones, etc.
+			No cambia, es inmutable.
+
+>Docker Container	Un contenedor es una instancia en ejecución de una imagen. Es como correr una app dentro de su 				propio entorno. Puedes tener muchas instancias (contenedores) de una misma imagen, 
+			y cada uno es independiente.
+
+
+docker images	//see the images
+
+docker ps		//ver contenedores en ejecucion
+docker ps -a		//ver todo los contenedores incluso los detenidos
+
+docker pull MySQL	//instala una imagen de MySQL dockerhub
+docker run --name mymysql -e MYSQL_ROOT_PASSWORD=codersql mysql
+docker run --name miotrabd -e MYSQL_ROOT_PASSWORD=codersql -p 7777:3306 mysql
+
+docker exec -it mymysql bash
+ o 
+docker exec -it mymysql mysql -u root -p
+
+
+------------------------------
+--INICIAR MI IMAGEN YA CREADA
+------------------------------
+(EJEMPLO CON MYSQL)
+
+docker start mymysql		//Enciende mi contenedor llamado mymysql
+docker exec -it mymysql bash	//para interactuar con el sistema del contenedor
+	     |
+//-i: Acepta entradas, pero no ves lo que sucede.
+//-t: Te da una terminal, pero no puedes escribir.
