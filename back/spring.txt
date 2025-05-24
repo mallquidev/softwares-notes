@@ -96,3 +96,74 @@ return http.build()
 		1. Leer el token JWT del encabezado de la solicitud
 		2. Validarlo
 		3. Autenticar al usuario si el token es va'lido
+
+--------------
+-MICROSERVICE
+--------------
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false
+
+archivo creado no es un ejecutable simplemente va contener dentro de si mas proyectos modulos que
+soy los microservicios y asu vez este proyecto padre hereda toda sus funcionalidades
+de spring boot
+
+--------------------------------------------------------------------------------------------------
+pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.0</version>
+  </parent>
+
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>Truek-Microservice</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>Truek-Microservice</name>
+  <packaging>pom</packaging><!-- le digo que va ser un contenedor de proyectos. va ser el padre-->
+
+  <modules>
+    <module></module><!-- aqui va el nombre de mi microservicio-->
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.36</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot</artifactId>
+          <version>3.4.4</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
+-------------------------------------------------------------------------------------------------
+GATEWAY
+>Geteway SPRING CLOUD ROUTING
+>Eureka Discovery Client SPRING CLOUD DISCOVERY
+>Config Client SPRING CLOUD CONFIG
+>Spring Boot Actuator OPS
