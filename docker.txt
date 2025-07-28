@@ -45,3 +45,24 @@ docker exec -it mymysql bash	//para interactuar con el sistema del contenedor
 	     |
 //-i: Acepta entradas, pero no ves lo que sucede.
 //-t: Te da una terminal, pero no puedes escribir.
+
+------------------------------
+-- INSTALACION DE JENKINS
+------------------------------
+docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11	//busca la imagen de jenkins en mi pc local y si no lo encuentra lo descarga
+
+docker run: Ejecuta un nuevo contenedor.
+
+-d: Modo detached, ejecuta el contenedor en segundo plano.
+
+-p 8080:8080: Mapea el puerto 8080 del contenedor al puerto 8080 de tu host (tu PC). Jenkins usa este puerto para su interfaz web.
+
+-p 50000:50000: Mapea el puerto 50000 del contenedor al de tu PC. Este puerto es usado para comunicación remota con agentes Jenkins (ej. para pipelines distribuidos).
+
+-v jenkins_home:/var/jenkins_home: Crea un volumen Docker llamado jenkins_home y lo monta en la ruta /var/jenkins_home dentro del contenedor. Esto permite persistencia de datos, como configuraciones, plugins y trabajos de Jenkins.
+
+jenkins/jenkins:lts-jdk11: Nombre de la imagen.
+
+Docker buscará esta imagen localmente, y si no existe, la descargará de Docker Hub.
+
+lts-jdk11 indica que se trata de la versión LTS de Jenkins con JDK 11 preinstalado (ideal para compatibilidad).
