@@ -27,3 +27,7 @@ jenkins/jenkins:lts-jdk11: Nombre de la imagen.
 Docker buscará esta imagen localmente, y si no existe, la descargará de Docker Hub.
 
 lts-jdk11 indica que se trata de la versión LTS de Jenkins con JDK 11 preinstalado (ideal para compatibilidad).
+
+------------------------------
+-- DESBLOQUEAR
+------------------------------

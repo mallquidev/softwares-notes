@@ -35,6 +35,21 @@ docker exec -it mymysql bash
 docker exec -it mymysql mysql -u root -p
 
 
+
+docker run --name mysql-vscode \
+  -e MYSQL_ROOT_PASSWORD=admin123 \
+  -p 3306:3306 \
+  -v /home/jean/mysql_data:/var/lib/mysql \
+  -d mysql:latest
+
+-d: Inicia el contenedor en modo "detached", es decir, en segundo plano. Así no ocupa tu terminal. Si no lo pones, el contenedor corre en primer plano y muestra todos los logs directamente allí.
+
+mysql:latest: Especifica qué imagen de Docker quieres usar. En este caso:
+
+mysql: Nombre de la imagen (del repositorio oficial de Docker Hub).
+
+latest: Etiqueta que indica que quieres la versión más reciente disponible.
+
 ------------------------------
 --INICIAR MI IMAGEN YA CREADA
 ------------------------------
