@@ -10,6 +10,99 @@
 ██║░░██║██╔══╝░░██╔══██╗
 ██████╔╝███████╗██████╦╝
 ╚═════╝░╚══════╝╚═════╝░
+
+
+// Raíz del sistema
+/                        // raíz de todo el sistema de archivos
+
+/bin                     // binarios esenciales (comandos básicos)
+   ├── bash      // intérprete de comandos
+   ├── ls        // listar archivos
+   ├── cp        // copiar archivos
+   ├── mv        // mover/renombrar
+   ├── rm        // borrar
+   ├── mkdir     // crear carpetas
+   ├── rmdir     // borrar carpetas vacías
+   ├── cat       // mostrar contenido de archivos
+   ├── echo      // imprimir texto
+   ├── pwd       // mostrar directorio actual
+
+/boot                   // archivos de arranque
+   ├── grub/    // configuración del gestor de arranque
+   └── vmlinuz  // kernel de Linux
+
+/dev                    // dispositivos representados como archivos
+   ├── sda      // primer disco duro
+   ├── sda1     // primera partición del disco
+   ├── null     // “agujero negro” (descartar datos)
+   ├── tty      // terminales virtuales
+
+/etc                    // configuración del sistema
+   ├── passwd   // lista de usuarios
+   ├── shadow   // contraseñas encriptadas
+   ├── group    // grupos de usuarios
+   ├── hosts    // tabla de hosts locales
+   ├── ssh/     // config del servidor SSH
+   └── fstab    // tabla de sistemas de archivos
+
+/home                   // directorios personales de usuarios
+   ├── juan/    // carpeta personal de usuario juan
+   ├── maria/   // carpeta personal de usuario maria
+
+/lib y /lib64            // librerías compartidas
+   └── *.so     // librerías usadas por binarios de /bin y /sbin
+
+/media                   // montaje automático de dispositivos
+   └── usb/     // ejemplo: pendrive montado
+
+/mnt                     // montaje manual de discos
+   └── disco/   // ejemplo: punto de montaje temporal
+
+/opt                     // software opcional de terceros
+   └── app/     // ejemplo: programas instalados manualmente
+
+/proc                    // sistema virtual (info de kernel y procesos)
+   ├── cpuinfo  // info de CPU
+   ├── meminfo  // info de memoria
+   └── [PID]/   // carpetas por proceso (ej: /proc/1234)
+
+/root                    // carpeta personal del superusuario root
+
+/run                     // info temporal de procesos y servicios
+   ├── sshd.pid // PID del servidor SSH
+   └── systemd/ // datos en ejecución del sistema
+
+/sbin                    // binarios de administración del sistema
+   ├── reboot   // reiniciar
+   ├── shutdown // apagar
+   ├── fdisk    // particionar discos
+   ├── ifconfig // configurar red (antiguo)
+   ├── ip       // comandos de red modernos
+   └── iptables // configurar firewall
+
+/srv                     // datos de servicios
+   └── www/     // archivos servidos por un servidor web
+
+/sys                     // info de dispositivos y kernel
+   └── devices/ // info de hardware conectado
+
+/tmp                     // archivos temporales (se borran al reiniciar)
+   └── tmpfile   // ejemplo de archivo temporal
+
+/usr                     // programas y utilidades de usuario
+   ├── bin/     // binarios no esenciales (ej: nano, git, python)
+   ├── sbin/    // binarios admin no esenciales
+   ├── lib/     // librerías adicionales
+   └── share/   // documentación, íconos, locales
+
+/var                     // datos variables
+   ├── log/     // registros del sistema (syslog, auth.log)
+   ├── cache/   // cachés de aplicaciones
+   ├── mail/    // correo local
+   └── www/     // páginas web servidas
+
+
+
 ________________________________
 
 --PONER MI USUARIO DEV COMO SUDO
