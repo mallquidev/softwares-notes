@@ -33,6 +33,10 @@ sudo adduser miuser
 sudo usermod -aG sudo miuser	//para dar privilegios sudo
 
 
+cat /etc/passwd		//ver los usuarios de la maquina
+
+last	//ver ultimo acceso de los usuarios
+
 _____________________________
 
 --CONFIG GRUB
