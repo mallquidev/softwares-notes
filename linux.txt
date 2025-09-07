@@ -25,6 +25,14 @@ dev	ALL=(ALL:ALL) ALL
 --En tal caso no tengo contra para root lo agrego
 sudo passwd root
 
+------------
+--add user
+
+sudo adduser miuser
+
+sudo usermod -aG sudo miuser	//para dar privilegios sudo
+
+
 _____________________________
 
 --CONFIG GRUB
