@@ -101,7 +101,15 @@
    ├── mail/    // correo local
    └── www/     // páginas web servidas
 
+----------
+-- change pass root
+sudo nano /etc/ssh/sshd_config
 
+PermitRootLogin yes				//descomentar y ponerle yes
+PasswordAuthentication yes		// lo mismo
+
+sudo systemctl restart ssh		//save and resert
+sudo passwd root				//set passwd
 
 ________________________________
 
