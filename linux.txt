@@ -12,6 +12,12 @@
 ╚═════╝░╚══════╝╚═════╝░
 
 
+-----------------
+--partition disk
+500gb FREE SPACE -select
+
+
+
 // Raíz del sistema
 /                        // raíz de todo el sistema de archivos
 
@@ -101,7 +107,7 @@
    ├── mail/    // correo local
    └── www/     // páginas web servidas
 
-----------
+------------------
 -- change pass root
 sudo nano /etc/ssh/sshd_config
 
