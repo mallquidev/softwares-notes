@@ -107,6 +107,11 @@
    ├── mail/    // correo local
    └── www/     // páginas web servidas
 
+--------------
+-historial de comandos de user
+
+cat /home/namedelusuario/.bash_history
+
 --------------------
 -- change pass root
 sudo nano /etc/ssh/sshd_config
