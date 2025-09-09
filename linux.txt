@@ -228,10 +228,9 @@ rm -r nombre_carpeta	//elimina con todo el contenido que tenga
 
 rm -rf nombre_carpeta	//elimina sin preguntas estas seguro
 
-____________________
-
+---------------------
 --ELIMINAR ARCHIVO
-___________________
+--------------------
 rm archivo.txt
 
 rm /ruta/del/archivo/archivo.txt
@@ -241,6 +240,12 @@ ACTUALIZAR ARCHIVO Y CARPETA
 mv "nombre_archivo.txt" "new archivo.txt"
 
 mv "nombre_carpeta" "new carpeta"
+
+------------------------
+ELIMINAR ALGO INSTALADO
+------------------------
+sudo apt remove --purge nombreinstalado		//remove(elimina el paquete)  --purge(elimina los archivos creados)
+sudo apt autoremove			//Esto elimina librerías que se instalaron con picom y ya no se usan.
 
 ___________________________
 
