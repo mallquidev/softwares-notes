@@ -34,8 +34,9 @@ docker exec -it mymysql bash
  o 
 docker exec -it mymysql mysql -u root -p
 
-
-
+------------
+mysql
+-------
 docker run --name mysql-vscode \
   -e MYSQL_ROOT_PASSWORD=admin123 \
   -p 3306:3306 
@@ -48,6 +49,21 @@ mysql:latest: Especifica qué imagen de Docker quieres usar. En este caso:
 mysql: Nombre de la imagen (del repositorio oficial de Docker Hub).
 
 latest: Etiqueta que indica que quieres la versión más reciente disponible.
+
+
+docker rm nombredemicontenedor		//elimina el contenedor
+
+--------
+postgresql
+-----------
+
+sudo docker run --name my-postgres \
+  -e POSTGRES_USER=admin \
+  -e POSTGRES_PASSWORD=admin123 \
+  -e POSTGRES_DB=mi_base \
+  -p 5432:5432 \
+  -d postgres:13.22-bookworm
+
 
 ------------------------------
 --INICIAR MI IMAGEN YA CREADA
