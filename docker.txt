@@ -65,6 +65,11 @@ sudo docker run --name my-postgres \
   -d postgres:13.22-bookworm
 
 
+sudo docker exec -it my-postgres bash	//entrar al bash del contenedor
+
+psql -U admin -d mydb	//con esto me conecto a mi db dentro del contenedor
+
+
 ------------------------------
 --INICIAR MI IMAGEN YA CREADA
 ------------------------------
