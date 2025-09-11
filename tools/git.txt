@@ -6,10 +6,17 @@
 ╚██████╔╝██║░░░██║░░░
 ░╚═════╝░╚═╝░░░╚═╝░░░
 
+-------------------
+ADD USER AND EMAIL
+-----
+git config --global user.name "mallquidev"
+git config --global user.email "tu_correo@example.com"
 
-___________________
+git config --global --list    //SEE MY INFO
+
+--------------------
 TOKEN FOR LINUX GIT
-__________________
+-----------------
 sudo apt install gh
 gh auth login
 
