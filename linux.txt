@@ -314,5 +314,12 @@ Terminal=false
 
 //GENEREAMOS CLAVE PARA GITHUB(EXAMPLE)
 ssh-keygen -t ed25519 -c "arch-github" -f ~/.ssh/id_ed25519_github 
-//ssh-keygen
+
+*ssh-keygen: programa que genera pares de claves SSH(privada + publica)
+*-t: 		tipo de clave
+*ed25519: 	algoritmo moderno de criptografica de curva elíptica mas seguro y rapido que RSA
+*-C: 		comentario que se guarda al final de la calve publica
+
+//CONFIGURAR EN 
+
 
