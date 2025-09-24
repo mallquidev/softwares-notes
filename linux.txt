@@ -313,13 +313,32 @@ Terminal=false
 --SSH
 
 //GENEREAMOS CLAVE PARA GITHUB(EXAMPLE)
-ssh-keygen -t ed25519 -c "arch-github" -f ~/.ssh/id_ed25519_github 
+ssh-keygen -t ed25519 -C "arch-github" -f ~/.ssh/id_ed25519_github 
 
 *ssh-keygen: programa que genera pares de claves SSH(privada + publica)
-*-t: 		tipo de clave
-*ed25519: 	algoritmo moderno de criptografica de curva elíptica mas seguro y rapido que RSA
-*-C: 		comentario que se guarda al final de la calve publica
+	*-t: 		tipo de clave
+	*ed25519: 	algoritmo moderno de criptografica de curva elíptica mas seguro y rapido que RSA
+	*-C: 		comentario que se guarda al final de la calve publica
 
-//CONFIGURAR EN 
+--ponemos el passphrase(contrasena de la clave)
+--si la dejamos vacia nos pedira la contra cada ves que usemos GIT
+
+//CREAMOS UN SSH-AGENT(para que recuerde la contra que pusimos)
+-si no hay agente lo arrancamos manualmente
+eval "$(ssh-agent -s)"
+	*eval: los ejecuta como comandos en tu shell
+
+ssh-add ~/.ssh/id_ed25519_github
+	*agregamos y ponemos la contra
+
+ssh=add -l
+	*ssh-add: es una utilidad para gestionar las claves SSH cargadas en el SSH-AGENT
+	* -l: lista
+	//eso haremos cada ves que se reinicie la pc porque lo guarda en ram y si no queremos repetir eso
+	  lo almacenamos en un KEYRING
+
+cat ~/.ssh/id_ed25519_github.pub
+	//esto lo pegamos en GITHUB SSH and GPG keys
+
 
 
