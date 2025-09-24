@@ -309,3 +309,10 @@ Categories=Development;
 Terminal=false
 ---------------------------------------------------------------------------------------
 
+------------------
+--SSH
+
+//GENEREAMOS CLAVE PARA GITHUB(EXAMPLE)
+ssh-keygen -t ed25519 -c "arch-github" -f ~/.ssh/id_ed25519_github 
+//ssh-keygen
+
