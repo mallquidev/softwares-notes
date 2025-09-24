@@ -340,5 +340,9 @@ ssh=add -l
 cat ~/.ssh/id_ed25519_github.pub
 	//esto lo pegamos en GITHUB SSH and GPG keys
 
+//PROBAR LA CONEXION
+ssh -T git@github.com
+	* -T: no abrir un shell interactivo ya que GITHUB no ofrece un sheel nomral por SSH
+		  solo a GIT(push, pull, clone)
 
 
