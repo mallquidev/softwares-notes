@@ -35,3 +35,14 @@ git reset --hard origin/main
 
 # Limpia archivos sin seguimiento (por si quedaron cosas fuera de Git)
 git clean -fd
+
+---------------
+COMMANDOS GIT
+--------------
+git branch mallqui          //esto crea una rama local no remota
+git push -u origin mallqui  //con esto empujamos a que sea remota
+(NUNCA DEBES IR A LA RAMA REMOTA, DEBES DE CREAR TU RAMA LOCAL Y MANDAR CAMBIOS A LA REMOTA)
+
+git checkout mallqui        //me muevo a la rama local mallqui
+
+git checkout -b mallqui2    //con esto creo la rama local y me muevo en esa rama
