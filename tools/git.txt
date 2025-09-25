@@ -20,3 +20,18 @@ TOKEN FOR LINUX GIT
 sudo apt install gh
 gh auth login
 
+----------------------------------------------
+RESETEAR A COMO ESTABA ANTES EN EL REPOSITORIO
+----------------------------------------------
+
+# Asegúrate de estar en main o de donde quieras que traiga
+git checkout main
+
+# Trae todo lo último de GitHub
+git fetch origin
+
+# Forzar a que tu main local sea idéntico al de GitHub
+git reset --hard origin/main
+
+# Limpia archivos sin seguimiento (por si quedaron cosas fuera de Git)
+git clean -fd
