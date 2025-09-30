@@ -35,8 +35,8 @@ docker exec -it mymysql bash
 docker exec -it mymysql mysql -u root -p
 
 ------------
-mysql
--------
+MYSQL
+------------
 docker run --name mysql-vscode \
   -e MYSQL_ROOT_PASSWORD=admin123 \
   -p 3306:3306 
@@ -52,10 +52,15 @@ latest: Etiqueta que indica que quieres la versión más reciente disponible.
 
 
 docker rm nombredemicontenedor		//elimina el contenedor
+-----------------------------------
+IMPORTAR UN ARCHIVO SQL A MI BD
+----------------------------------
+sudo docker exec -i my-mysql mysql -u root -p empadronamiento < ~/Downloads/empadronamiento.sql
+sudo docker exec -i my-mysql mysql -u root -padmin123 empadronamiento < ~/Downloads/empadronamiento.sql 	//aqui puse -padmin123 es con toda la contra
 
---------
-postgresql
------------
+-----------------
+POSTGRESQL
+----------------
 
 sudo docker run --name my-postgres \
   -e POSTGRES_USER=admin \
