@@ -348,5 +348,12 @@ cat ~/.ssh/id_ed25519_github.pub
 ssh -T git@github.com
 	* -T: no abrir un shell interactivo ya que GITHUB no ofrece un sheel nomral por SSH
 		  solo a GIT(push, pull, clone)
+///////////////////////////
+VERIFICAMOS SI TENEMOS LA CLAVE SSH
+ls -al ~/.ssh
 
+//////////////////////////
+INICIA EL AGENTE Y SSH Y ANIADE LA CLAVE
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
 
