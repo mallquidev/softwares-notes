@@ -250,6 +250,10 @@ mv -r carpeta /ruta/a/directorio/nuevo/		///mover una carpeta y todo su
 						contenido
 
 mv -r proyectos ~/Desktop/	///moverla a tu directorio personal
+	///////////////////////////////
+cp archivo.txt ~/Documents/directorio/pegaraqui/    	//para copiar un archivo a otro
+cp -r carpeta ~/Documents/directorio/pegaraqui/    	//para copiar una carpeta con todo dentro que tenga a otro
+
 -------------------
 --LEER UN ARCHIVO
 
