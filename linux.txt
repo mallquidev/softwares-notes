@@ -205,7 +205,8 @@ echo "primer texto" > nombre_archivo.txt
 > nombre_archivo.txt	//solo crear el archivo
 
 -----------------
---LEER ARCHIVO
+LEER ARCHIVO
+----------------
 
 nano nombre_archivo.txt
 nano "nombre archivo.txt"	//nano es un editor de texto sencillo
@@ -226,6 +227,9 @@ rm -rf nombre_carpeta	//elimina sin preguntas estas seguro
 --ELIMINAR ARCHIVO
 --------------------
 rm archivo.txt
+rm -r carpeta		//eliminia la carpeta con todo lo que tenga dentro PERO si hay pedirá confirmación solo si hay archivos protegidos contra escritura
+rm -rf carpeta		//eliminara todo sin preguntarte
+rm -ri carpeta		//pregunta siempre cuando elimina
 
 rm /ruta/del/archivo/archivo.txt
 
