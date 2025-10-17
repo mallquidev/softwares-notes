@@ -105,6 +105,10 @@ services:
       - ./data:/var/lib/postgresql/data
       - ./init:/docker-entrypoint-initdb.d
 
+-------------------------------------------
+docker compose up -d
+
+
 
 ------------------------------
 --INICIAR MI IMAGEN YA CREADA
