@@ -62,6 +62,8 @@ sudo docker exec -i my-mysql mysql -u root -padmin123 empadronamiento < ~/Downlo
 POSTGRESQL
 ----------------
 
+-PARA HACER PRUEBAS RAPIDAS EN EL SQL
+
 sudo docker run --name my-postgres \
   -e POSTGRES_USER=admin \
   -e POSTGRES_PASSWORD=admin123 \
@@ -73,6 +75,35 @@ sudo docker run --name my-postgres \
 sudo docker exec -it my-postgres bash	//entrar al bash del contenedor
 
 psql -U admin -d mydb	//con esto me conecto a mi db dentro del contenedor
+
+///////////////////////////////
+-DOCKER COMPOSE.YML Si quieres agregar más opciones (otra red, varios contenedores, reinicios automáticos, etc.)
+*Automatiza todo: creación, configuración, volumen y nombre del contenedor.
+*./data → guarda la base de datos en tu disco del VPS. Si borras el contenedor, los datos permanecen.
+*container_name: mi_postgres → le das un nombre claro al contenedor.
+*restart: always → si reinicias el servidor, el contenedor se levanta solo.
+*Es más fácil de versionar y compartir (por ejemplo en Git con tu equipo).
+-----------------------------------------
+mkdir -p ~/docker/sql/postgresql/data
+mkdir -p ~/docker/sql/postgresql/init
+
+----------------------------------------
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: mi_base
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
 
 
 ------------------------------
